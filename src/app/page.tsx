@@ -98,7 +98,7 @@ export default function Home() {
       </section>
 
       {/* 登場人物 */}
-      <section className="relative bg-[#f5ecf3] py-16">
+      <section className="relative py-16">
         <p
           aria-hidden
           className="nine-watermark pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 font-display text-[7rem] font-bold tracking-[0.1em] whitespace-nowrap sm:text-[10rem]"
