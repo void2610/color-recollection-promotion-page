@@ -23,13 +23,6 @@ export default function Home() {
     <main className="overflow-x-clip">
       {/* メインビジュアル */}
       <section className="relative">
-        {/* 縦書きキャプション (9-nine のサイド帯を再現) */}
-        <p
-          className="absolute top-40 left-20 hidden font-display text-sm tracking-[0.5em] text-nine-blue lg:block"
-          style={{ writingMode: "vertical-rl" }}
-        >
-          OFFICIAL SITE
-        </p>
         <DiaDeco className="top-0 -left-16" />
         <DiaDeco className="right-0 bottom-0 scale-x-[-1]" />
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-32 text-center">

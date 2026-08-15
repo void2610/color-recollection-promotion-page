@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Infant, Noto_Sans_JP, Oswald } from "next/font/google";
 import { LoadingScreen } from "@/components/loading-screen";
 import { Providers } from "@/components/providers";
+import { SideRails } from "@/components/side-rails";
 import { SiteNavbar } from "@/components/site-navbar";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SmoothScroll />
           <LoadingScreen />
           <SiteNavbar />
+          <SideRails />
           <div className="flex flex-1 flex-col">{children}</div>
           <SiteFooter />
         </Providers>
