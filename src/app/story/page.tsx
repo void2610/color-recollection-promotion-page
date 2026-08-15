@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 export default function StoryPage() {
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
-      <SectionHeading en="Story" ja="ストーリー" />
-      <div className="space-y-4 leading-loose text-foreground-600">
+      <SectionHeading en="STORY" ja="ストーリー" />
+      <div className="space-y-4 leading-loose text-[#333]/80">
         <p>
           自立駆動型アンドロイド【自動人形（オートマタ）】が、家電のように大量生産・販売されるようになった近未来のフランス。
         </p>
@@ -23,13 +23,13 @@ export default function StoryPage() {
         <p>
           持ち込まれたのは、それぞれの事情を抱えた自動人形たち。彼らと対話し、報告書を書き、その運命を決めるのはあなただ。
         </p>
-        <p className="font-semibold text-foreground">
+        <p className="font-semibold text-[#333]">
           家族のような役割をロボットに求めたとき、どこまで人間と同等に扱うべきなのか――ゆっくりと考えを深めていく、チルな時間をあなたに。
         </p>
       </div>
 
       <div className="mt-16">
-        <SectionHeading en="World" ja="世界観キーワード" />
+        <SectionHeading en="WORLD" ja="世界観キーワード" />
         <dl className="space-y-8">
           <KeywordItem
             term="仕立て屋（テイラー）"
@@ -57,7 +57,7 @@ function KeywordItem({ term, description }: { term: string; description: string 
   return (
     <div>
       <dt className="text-lg font-bold">{term}</dt>
-      <dd className="mt-2 leading-relaxed text-foreground-600">{description}</dd>
+      <dd className="mt-2 leading-relaxed text-[#333]/80">{description}</dd>
     </div>
   );
 }

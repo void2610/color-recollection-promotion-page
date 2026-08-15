@@ -37,7 +37,7 @@ export default async function CharacterPage({ params }: Props) {
       <div className="relative mx-auto max-w-3xl px-6 py-16">
         <Link
           href="/characters"
-          className="inline-flex items-center gap-1 text-sm text-foreground-500 transition-colors hover:text-foreground"
+          className="inline-flex items-center gap-1 text-sm text-[#333]/60 transition-colors hover:text-[#333]"
         >
           <ArrowLeft size={16} />
           登場人物一覧へ
@@ -49,18 +49,18 @@ export default async function CharacterPage({ params }: Props) {
           </p>
           <div className="mt-1 flex flex-wrap items-baseline gap-3">
             <h1 className="text-5xl font-bold">{character.name}</h1>
-            <span className="text-lg text-foreground-500">{character.nameEn}</span>
+            <span className="text-lg text-[#333]/60">{character.nameEn}</span>
           </div>
         </header>
 
         <blockquote
-          className="mt-8 border-l-4 pl-4 text-lg italic text-foreground-600"
+          className="mt-8 border-l-4 pl-4 text-lg italic text-[#333]/80"
           style={{ borderColor: character.color }}
         >
           「{character.quote}」
         </blockquote>
 
-        <div className="mt-8 space-y-4 leading-loose text-foreground-600">
+        <div className="mt-8 space-y-4 leading-loose text-[#333]/80">
           <p>{character.description}</p>
           <p>{character.detail}</p>
         </div>
@@ -69,7 +69,7 @@ export default async function CharacterPage({ params }: Props) {
           {character.traits.map((trait) => (
             <li
               key={trait}
-              className="rounded-full border border-foreground/15 px-3 py-1 text-xs text-foreground-500"
+              className="rounded-full border border-nine-blue/30 px-3 py-1 text-xs text-[#333]/60"
             >
               {trait}
             </li>
@@ -77,10 +77,10 @@ export default async function CharacterPage({ params }: Props) {
         </ul>
 
         <h2 className="mt-12 text-xl font-bold">プロフィール</h2>
-        <dl className="mt-4 divide-y divide-foreground/10 overflow-hidden rounded-2xl border border-foreground/10">
+        <dl className="mt-4 divide-y divide-nine-pale overflow-hidden rounded-2xl border border-nine-pale">
           {character.profile.map(({ label, value }) => (
             <div key={label} className="grid grid-cols-1 gap-1 p-4 sm:grid-cols-[10rem_1fr]">
-              <dt className="text-sm font-semibold text-foreground-500">{label}</dt>
+              <dt className="text-sm font-semibold text-[#333]/60">{label}</dt>
               <dd className="text-sm">{value}</dd>
             </div>
           ))}

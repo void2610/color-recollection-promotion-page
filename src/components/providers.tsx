@@ -6,11 +6,11 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <HeroUIProvider>
+      {/* 9-nine 準拠の白ベースデザインのためライトテーマ固定 */}
       <NextThemesProvider
         attribute="class"
-        defaultTheme="dark"
-        themes={["light", "dark"]}
-        enableSystem={false}
+        defaultTheme="light"
+        forcedTheme="light"
         storageKey="color-recollection-theme"
       >
         {children}

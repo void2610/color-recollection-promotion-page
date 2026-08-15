@@ -1,15 +1,14 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { CharacterCard } from "@/components/character-card";
 import { CreatorCard } from "@/components/creator-card";
+import { DiaDeco } from "@/components/dia-deco";
+import { ViewMore } from "@/components/view-more";
 import { CHARACTERS } from "@/data/characters";
 import { CIRCLE_NAME, CREATORS } from "@/data/creators";
 import { NEWS } from "@/data/news";
 import { SITE } from "@/data/site";
 
 const SPEC_ROWS = [
-  ["タイトル", `${SITE.title} (${SITE.titleEn})`],
   ["ジャンル", SITE.genre],
   ["プラットフォーム", SITE.platform],
   ["プレイ時間", SITE.playTime],
@@ -20,54 +19,61 @@ const SPEC_ROWS = [
 
 export default function Home() {
   return (
-    <main>
-      {/* ヒーロー */}
-      <section className="relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-25"
-          style={{
-            background:
-              "radial-gradient(40% 60% at 20% 30%, #00b7eb 0%, transparent 70%), radial-gradient(40% 60% at 80% 30%, #e0218a 0%, transparent 70%), radial-gradient(50% 60% at 50% 90%, #f5c518 0%, transparent 70%)",
-          }}
-        />
+    <main className="overflow-x-clip">
+      {/* メインビジュアル */}
+      <section className="relative">
+        {/* 左の菱形柄バンド + 縦書きキャプション (9-nine のサイド帯を再現) */}
+        <div aria-hidden className="nine-checker-light absolute inset-y-0 left-0 hidden w-44 lg:block" />
+        <p
+          className="absolute top-40 left-20 hidden font-display text-sm tracking-[0.5em] text-nine-blue lg:block"
+          style={{ writingMode: "vertical-rl" }}
+        >
+          OFFICIAL SITE
+        </p>
+        <DiaDeco className="top-0 -left-16" />
+        <DiaDeco className="right-0 bottom-0 scale-x-[-1]" />
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-32 text-center">
-          <p className="text-sm uppercase tracking-[0.4em] text-foreground-500">
-            {SITE.titleEn}
+          <p className="font-display text-lg tracking-[0.4em] text-nine-blue">
+            {SITE.titleEn.toUpperCase()}
           </p>
-          <h1 className="text-5xl font-bold tracking-wide sm:text-6xl">{SITE.title}</h1>
-          <p className="text-lg text-foreground-600">{SITE.catchcopy}</p>
-          <p className="max-w-xl text-sm leading-relaxed text-foreground-500">
-            {SITE.description}
-          </p>
-          <span className="rounded-full border border-foreground/20 px-4 py-1 text-sm text-foreground-500">
-            {SITE.status} — 続報をお待ちください
+          <h1 className="text-5xl font-bold tracking-wide text-nine-blue sm:text-6xl">
+            {SITE.title}
+          </h1>
+          <p className="text-lg text-[#333]">{SITE.catchcopy}</p>
+          <p className="max-w-xl text-sm leading-relaxed text-[#333]/70">{SITE.description}</p>
+          <span className="border border-nine-blue px-6 py-1.5 font-oswald text-sm tracking-[0.1em] text-nine-blue">
+            NOW IN DEVELOPMENT
           </span>
         </div>
       </section>
 
       {/* 最新情報 */}
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <SectionHeading en="News" ja="最新情報" />
-        <ul className="space-y-3">
-          {NEWS.slice(0, 3).map((item) => (
-            <li key={`${item.date}-${item.title}`} className="flex flex-wrap items-center gap-4">
-              <time className="font-mono text-sm text-foreground-500">{item.date}</time>
-              <span className="rounded-full bg-foreground/10 px-3 py-0.5 text-xs">
-                {item.category}
-              </span>
-              <span>{item.title}</span>
+      <section className="relative mx-auto max-w-5xl px-6 py-16">
+        <SectionHeading en="NEWS" ja="ニュース" />
+        <ul>
+          {NEWS.slice(0, 6).map((item) => (
+            <li key={`${item.date}-${item.title}`} className="nine-hairline">
+              <div className="flex flex-wrap items-center gap-4 py-5">
+                <time className="font-oswald text-sm tracking-[0.1em] text-nine-blue">
+                  {item.date.replaceAll("-", ".")}
+                </time>
+                <span className="border border-nine-blue px-3 py-0.5 text-xs text-nine-blue">
+                  {item.category}
+                </span>
+                <span className="text-sm">{item.title}</span>
+              </div>
             </li>
           ))}
         </ul>
-        <MoreLink href="/news" label="最新情報をすべて見る" />
+        <ViewMore href="/news" />
       </section>
 
       {/* ストーリー */}
-      <section className="border-y border-foreground/10 bg-content1/50">
+      <section className="relative">
+        <DiaDeco className="top-8 right-0 scale-x-[-1]" />
         <div className="mx-auto max-w-5xl px-6 py-16">
-          <SectionHeading en="Story" ja="ストーリー" />
-          <div className="space-y-4 leading-loose text-foreground-600">
+          <SectionHeading en="STORY" ja="ストーリー" />
+          <div className="space-y-4 leading-loose text-[#333]">
             <p>
               ――オートマタができてから、世の中は便利になった。
               <br />
@@ -80,61 +86,63 @@ export default function Home() {
               祖父の工房を継いだあなたのもとに、ある日届く【修正依頼】のメール。持ち込まれた自動人形たちとの対話が、彼らの――そしてあなたの運命を決めていく。
             </p>
           </div>
-          <MoreLink href="/story" label="ストーリー・世界観を読む" />
+          <ViewMore href="/story" />
         </div>
       </section>
 
       {/* 登場人物 */}
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <SectionHeading en="Characters" ja="登場人物" />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {CHARACTERS.slice(0, 3).map((character) => (
-            <CharacterCard key={character.slug} character={character} />
-          ))}
+      <section className="relative bg-[#eff4fd] py-16">
+        <p
+          aria-hidden
+          className="nine-watermark pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 font-display text-[7rem] font-bold tracking-[0.1em] whitespace-nowrap sm:text-[10rem]"
+        >
+          PROFILE
+        </p>
+        <div className="relative mx-auto max-w-5xl px-6">
+          <SectionHeading en="CHARACTER" ja="キャラクター" />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {CHARACTERS.slice(0, 3).map((character) => (
+              <CharacterCard key={character.slug} character={character} />
+            ))}
+          </div>
+          <ViewMore href="/characters" />
         </div>
-        <MoreLink href="/characters" label="登場人物をすべて見る" />
       </section>
 
       {/* クリエイター */}
-      <section className="border-t border-foreground/10 bg-content1/50">
-        <div className="mx-auto max-w-5xl px-6 py-16">
-          <SectionHeading en="Creators" ja="クリエイター" />
-          <p className="mb-8 text-foreground-600">制作サークル: {CIRCLE_NAME}</p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {CREATORS.map((creator) => (
-              <CreatorCard key={creator.name} creator={creator} />
-            ))}
-          </div>
-          <MoreLink href="/creators" label="クリエイターの詳細を見る" />
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <SectionHeading en="CREATOR" ja="クリエイター" />
+        <p className="mb-8 text-[#333]">制作サークル: {CIRCLE_NAME}</p>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {CREATORS.map((creator) => (
+            <CreatorCard key={creator.name} creator={creator} />
+          ))}
         </div>
+        <ViewMore href="/creators" />
       </section>
 
       {/* 製品概要 */}
-      <section className="border-t border-foreground/10">
-        <div className="mx-auto max-w-5xl px-6 py-16">
-          <SectionHeading en="Product" ja="製品概要" />
-          <dl className="divide-y divide-foreground/10 overflow-hidden rounded-2xl border border-foreground/10">
-            {SPEC_ROWS.map(([label, value]) => (
-              <div key={label} className="grid grid-cols-1 gap-1 p-4 sm:grid-cols-[10rem_1fr]">
-                <dt className="text-sm font-semibold text-foreground-500">{label}</dt>
-                <dd className="text-sm">{value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+      <section className="relative mx-auto max-w-5xl px-6 py-16">
+        <DiaDeco className="top-0 right-0 scale-x-[-1]" />
+        <SectionHeading en="GAME" ja="製品概要" />
+        <h3 className="nine-hairline pb-3 text-2xl font-bold text-nine-blue">
+          {SITE.title}
+          <span className="ml-3 font-display text-base font-semibold text-nine-blue/70">
+            {SITE.titleEn}
+          </span>
+        </h3>
+        <dl className="mt-6">
+          {SPEC_ROWS.map(([label, value]) => (
+            <div
+              key={label}
+              className="nine-hairline grid grid-cols-1 gap-1 py-4 sm:grid-cols-[12rem_1fr]"
+            >
+              <dt className="text-sm font-medium text-nine-blue">{label}</dt>
+              <dd className="text-sm">{value}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
     </main>
-  );
-}
-
-function MoreLink({ href, label }: { href: string; label: string }) {
-  return (
-    <Link
-      href={href}
-      className="mt-8 inline-flex items-center gap-1 text-sm font-semibold text-foreground-500 transition-colors hover:text-foreground"
-    >
-      {label}
-      <ArrowRight size={16} />
-    </Link>
   );
 }

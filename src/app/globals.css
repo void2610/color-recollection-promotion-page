@@ -9,7 +9,54 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* 9-nine-project.com 準拠の配色・タイポグラフィ */
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-display: var(--font-cormorant), serif;
+  --font-oswald: var(--font-oswald), sans-serif;
+  --color-nine-blue: #004789;
+  --color-nine-blue-hover: #0c569a;
+  --color-nine-pale: #e5ecf3;
+  --color-nine-sky: #0084ff;
+}
+
+/* 濃紺→薄青のグラデーション罫線 (9-nine のセパレーター再現) */
+.nine-hairline {
+  border-bottom: 1px solid;
+  border-image: linear-gradient(to right, #004789, #004789 5%, #e5ecf3) 1;
+}
+
+/* 菱形チェッカー柄 (9-nine の背景パターンを画像なしで再現) */
+.nine-checker-light {
+  background-image: repeating-conic-gradient(
+    from 45deg,
+    rgba(0, 71, 137, 0.06) 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 90px 90px;
+}
+
+.nine-checker-dark {
+  background-image: repeating-conic-gradient(
+    from 45deg,
+    rgba(255, 255, 255, 0.04) 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 90px 90px;
+}
+
+/* フッター上端のドット状ボーダー */
+.nine-dotted-edge {
+  height: 12px;
+  background-image: radial-gradient(circle at 50% 100%, #004789 55%, transparent 56%);
+  background-size: 14px 12px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+/* セクション背後のアウトライン透かし文字 */
+.nine-watermark {
+  -webkit-text-stroke: 1px rgba(0, 71, 137, 0.15);
+  color: transparent;
+  user-select: none;
 }

@@ -17,9 +17,9 @@ export const SITE = {
 } as const;
 
 export const NAV_ITEMS = [
-  { href: "/", label: "ホーム" },
-  { href: "/story", label: "ストーリー" },
-  { href: "/characters", label: "登場人物" },
-  { href: "/news", label: "最新情報" },
-  { href: "/creators", label: "クリエイター" },
+  { href: "/", en: "HOME", ja: "ホーム" },
+  { href: "/story", en: "STORY", ja: "ストーリー" },
+  { href: "/characters", en: "CHARACTER", ja: "登場人物" },
+  { href: "/news", en: "NEWS", ja: "最新情報" },
+  { href: "/creators", en: "CREATOR", ja: "クリエイター" },
 ] as const;

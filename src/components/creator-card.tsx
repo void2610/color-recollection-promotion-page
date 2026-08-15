@@ -4,25 +4,29 @@ import type { Creator } from "@/data/creators";
 
 export function CreatorCard({ creator }: { creator: Creator }) {
   return (
-    <div className="rounded-2xl border border-foreground/10 p-6">
+    <div className="relative h-full border-b-2 border-nine-blue bg-white p-6 shadow-[0_2px_12px_rgba(0,71,137,0.08)]">
+      <span
+        aria-hidden
+        className="absolute right-0 bottom-0 h-0 w-0 border-b-8 border-l-8 border-b-nine-blue border-l-transparent"
+      />
       {creator.icon ? (
         <Image
           src={creator.icon}
           alt={`${creator.name} のアイコン`}
           width={64}
           height={64}
-          className="h-16 w-16 rounded-full border border-foreground/10 object-cover"
+          className="h-16 w-16 rounded-full border border-nine-pale object-cover"
         />
       ) : (
         <div
           aria-hidden
-          className="flex h-16 w-16 items-center justify-center rounded-full border border-foreground/10 bg-foreground/10 text-2xl font-bold text-foreground-500"
+          className="flex h-16 w-16 items-center justify-center rounded-full bg-nine-pale text-2xl font-bold text-nine-blue"
         >
           {creator.name.charAt(0)}
         </div>
       )}
-      <h3 className="mt-4 text-xl font-bold">{creator.name}</h3>
-      <ul className="mt-1 text-sm text-foreground-500">
+      <h3 className="mt-4 text-xl font-bold text-[#333]">{creator.name}</h3>
+      <ul className="mt-1 text-sm text-nine-blue">
         {creator.roles.map((role) => (
           <li key={role}>{role}</li>
         ))}
@@ -34,7 +38,7 @@ export function CreatorCard({ creator }: { creator: Creator }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${creator.name} の X (Twitter)`}
-            className="text-foreground-500 transition-colors hover:text-foreground"
+            className="text-nine-blue/70 transition-colors hover:text-nine-blue"
           >
             <XIcon />
           </a>
@@ -45,7 +49,7 @@ export function CreatorCard({ creator }: { creator: Creator }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${creator.name} の GitHub`}
-            className="text-foreground-500 transition-colors hover:text-foreground"
+            className="text-nine-blue/70 transition-colors hover:text-nine-blue"
           >
             <GithubIcon />
           </a>
