@@ -13,16 +13,19 @@ export const CREATORS: Creator[] = [
   {
     name: "余々暇",
     roles: ["メインシナリオライター", "キャラクターデザイン", "イラスト"],
+    icon: "/creators/yoyoka.jpg",
     x: "https://x.com/44ka_9ka",
   },
   {
     name: "ひいらぎ",
     roles: ["サブシナリオライター", "UIデザイン", "実装"],
+    icon: "/creators/hiiragi.jpg",
     x: "https://x.com/Snow_alf10",
   },
   {
     name: "水かもめ",
     roles: ["背景アーティスト"],
+    icon: "/creators/mizukamome.png",
     x: "https://x.com/mizukamomeeee",
   },
   {

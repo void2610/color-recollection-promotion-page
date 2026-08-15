@@ -23,7 +23,7 @@ export default function CreatorsPage() {
                 alt={`${creator.name} のアイコン`}
                 width={64}
                 height={64}
-                className="rounded-full border border-foreground/10"
+                className="h-16 w-16 rounded-full border border-foreground/10 object-cover"
               />
             ) : (
               <div
