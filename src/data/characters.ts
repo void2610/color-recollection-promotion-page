@@ -1,5 +1,7 @@
 export type Character = {
   slug: string;
+  // public/ 配下の立ち絵パス (未設定キャラは画像なし)
+  image?: string;
   name: string;
   nameEn: string;
   role: string;
@@ -17,6 +19,7 @@ export type Character = {
 export const CHARACTERS: Character[] = [
   {
     slug: "taylor",
+    image: "/characters/taylor.png",
     name: "テイラー",
     nameEn: "Taylor",
     role: "主人公 / 仕立て屋",
@@ -37,6 +40,7 @@ export const CHARACTERS: Character[] = [
   },
   {
     slug: "key",
+    image: "/characters/key.png",
     name: "キイ",
     nameEn: "Key",
     role: "助手",
@@ -57,6 +61,7 @@ export const CHARACTERS: Character[] = [
   },
   {
     slug: "cyan",
+    image: "/characters/cyan.png",
     name: "シアン",
     nameEn: "Cyan",
     role: "自動人形",
@@ -77,6 +82,7 @@ export const CHARACTERS: Character[] = [
   },
   {
     slug: "m",
+    image: "/characters/m.png",
     name: "エム",
     nameEn: "M",
     role: "自動人形",
@@ -97,6 +103,7 @@ export const CHARACTERS: Character[] = [
   },
   {
     slug: "soga",
+    image: "/characters/soga.png",
     name: "ソガ",
     nameEn: "Soga",
     role: "自動人形",

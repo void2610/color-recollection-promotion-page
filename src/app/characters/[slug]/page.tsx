@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -34,7 +35,7 @@ export default async function CharacterPage({ params }: Props) {
           background: `radial-gradient(60% 50% at 50% 0%, ${character.color} 0%, transparent 70%)`,
         }}
       />
-      <div className="relative mx-auto max-w-3xl px-6 py-16">
+      <div className="relative isolate mx-auto max-w-3xl px-6 py-16">
         <Link
           href="/characters"
           className="inline-flex items-center gap-1 text-sm text-[#333]/60 transition-colors hover:text-[#333]"
@@ -43,6 +44,18 @@ export default async function CharacterPage({ params }: Props) {
           登場人物一覧へ
         </Link>
 
+        {character.image && (
+          <div className="pointer-events-none absolute top-24 right-0 -z-10 hidden h-[600px] opacity-90 lg:block">
+            <Image
+              src={character.image}
+              alt=""
+              width={500}
+              height={1400}
+              priority
+              className="h-full w-auto object-contain"
+            />
+          </div>
+        )}
         <header className="mt-8">
           <p className="text-sm font-semibold" style={{ color: character.color }}>
             {character.role} — {character.colorLabel}

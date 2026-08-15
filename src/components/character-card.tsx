@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Character } from "@/data/characters";
 
@@ -13,6 +14,17 @@ export function CharacterCard({ character }: { character: Character }) {
           aria-hidden
           className="absolute right-0 bottom-0 h-0 w-0 border-b-8 border-l-8 border-b-nine-blue border-l-transparent"
         />
+        {character.image && (
+          <div className="mb-4 flex h-64 items-end justify-center overflow-hidden">
+            <Image
+              src={character.image}
+              alt={character.name}
+              width={400}
+              height={1000}
+              className="h-full w-auto object-contain object-bottom"
+            />
+          </div>
+        )}
         <div className="flex items-baseline gap-3">
           <h3 className="text-2xl font-bold text-[#333]">{character.name}</h3>
           <span className="font-display text-sm text-nine-blue">{character.nameEn}</span>
