@@ -27,7 +27,7 @@ export function SiteFooter() {
           </a>
         </div>
         <p>
-          © 2026 {CIRCLE_NAME} — {SITE.title} ({SITE.titleEn})
+          © 2026 {CIRCLE_NAME} — {SITE.titleEn}
         </p>
       </div>
     </footer>
