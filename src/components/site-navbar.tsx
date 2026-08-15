@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -12,12 +13,17 @@ export function SiteNavbar() {
 
   return (
     <header className="relative z-40 bg-white">
-      <div className="mx-auto flex h-[120px] max-w-6xl items-center justify-between px-6 sm:justify-center">
-        <Link href="/" className="sm:hidden">
-          <span className="font-display text-2xl font-bold text-nine-blue">
-            {SITE.titleEn}
-          </span>
-        </Link>
+      <Link href="/" className="absolute top-6 left-6 z-10">
+        <Image
+          src="/logo.svg"
+          alt={SITE.title}
+          width={433}
+          height={68}
+          priority
+          className="h-auto w-44 sm:w-52"
+        />
+      </Link>
+      <div className="mx-auto flex h-[120px] max-w-6xl items-center justify-end px-6 sm:justify-center">
 
         <nav className="hidden sm:block">
           <ul className="flex">

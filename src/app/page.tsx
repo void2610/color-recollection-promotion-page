@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SectionHeading } from "@/components/section-heading";
 import { CharacterCard } from "@/components/character-card";
 import { CreatorCard } from "@/components/creator-card";
@@ -33,11 +34,15 @@ export default function Home() {
         <DiaDeco className="top-0 -left-16" />
         <DiaDeco className="right-0 bottom-0 scale-x-[-1]" />
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-32 text-center">
-          <p className="font-display text-lg tracking-[0.4em] text-nine-blue">
-            {SITE.titleEn.toUpperCase()}
-          </p>
-          <h1 className="text-5xl font-bold tracking-wide text-nine-blue sm:text-6xl">
-            {SITE.title}
+          <h1>
+            <Image
+              src="/logo.svg"
+              alt={SITE.title}
+              width={433}
+              height={68}
+              priority
+              className="h-auto w-[80vw] max-w-[520px]"
+            />
           </h1>
           <p className="text-lg text-[#333]">{SITE.catchcopy}</p>
           <p className="max-w-xl text-sm leading-relaxed text-[#333]/70">{SITE.description}</p>
