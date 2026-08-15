@@ -9,9 +9,17 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* 明朝は詰まって見えるため、全体の字間・行間をゆったりめに */
+body {
+  letter-spacing: 0.04em;
+  line-height: 1.9;
+}
+
 /* 9-nine-project.com 準拠の配色・タイポグラフィ */
 @theme inline {
-  --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", sans-serif;
+  /* サイト全体は明朝寄り。UI 的な箇所は --font-gothic を明示して使う */
+  --font-sans: var(--font-noto-serif-jp), "Hiragino Mincho ProN", serif;
+  --font-gothic: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", sans-serif;
   --font-display: var(--font-cormorant), serif;
   --font-oswald: var(--font-oswald), sans-serif;
   --color-nine-blue: #004789;

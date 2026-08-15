@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Infant, Noto_Sans_JP, Oswald } from "next/font/google";
+import { Cormorant_Infant, Noto_Sans_JP, Noto_Serif_JP, Oswald } from "next/font/google";
 import { LoadingScreen } from "@/components/loading-screen";
 import { Providers } from "@/components/providers";
 import { SideRails } from "@/components/side-rails";
@@ -11,6 +11,12 @@ import "./globals.css";
 const cormorant = Cormorant_Infant({
   variable: "--font-cormorant",
   weight: ["600", "700"],
+  subsets: ["latin"],
+});
+
+const notoSerifJp = Noto_Serif_JP({
+  variable: "--font-noto-serif-jp",
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
 
@@ -40,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ja"
       suppressHydrationWarning
-      className={`${cormorant.variable} ${notoSansJp.variable} ${oswald.variable} h-full bg-white antialiased`}
+      className={`${cormorant.variable} ${notoSerifJp.variable} ${notoSansJp.variable} ${oswald.variable} h-full bg-white antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans text-[#333]">
         <Providers>
