@@ -9,7 +9,7 @@ export function CharacterCard({ character }: { character: Character }) {
       href={`/characters/${character.slug}`}
       className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nine-blue"
     >
-      <article className="relative h-full border-b-2 border-nine-blue bg-white p-6 shadow-[0_2px_12px_rgba(0,71,137,0.08)] transition-transform hover:-translate-y-1">
+      <article className="relative h-full border-b-2 border-nine-blue bg-white p-6 shadow-[0_2px_12px_rgba(45,42,110,0.08)] transition-transform hover:-translate-y-1">
         <span
           aria-hidden
           className="absolute right-0 bottom-0 h-0 w-0 border-b-8 border-l-8 border-b-nine-blue border-l-transparent"
@@ -36,7 +36,7 @@ export function CharacterCard({ character }: { character: Character }) {
           <h3 className="text-2xl font-bold text-[#333]">{character.name}</h3>
           <span className="font-display text-sm text-nine-blue">{character.nameEn}</span>
         </div>
-        <p className="mt-1 text-xs font-medium" style={{ color: character.color === "#eaeef5" ? "#004789" : character.color }}>
+        <p className="mt-1 text-xs font-medium" style={{ color: character.color === "#eaeef5" ? "#3a3782" : character.color }}>
           {character.role}
         </p>
         <blockquote className="mt-4 border-l-2 border-nine-blue/40 pl-3 text-sm italic text-[#333]/70">

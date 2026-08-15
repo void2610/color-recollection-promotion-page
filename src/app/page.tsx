@@ -24,6 +24,15 @@ export default function Home() {
     <main className="overflow-x-clip">
       {/* メインビジュアル */}
       <section className="relative">
+        {/* ゲーム UI のホログラム調パステルを淡く敷く */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            background:
+              "radial-gradient(45% 60% at 15% 25%, #bfe6f2 0%, transparent 70%), radial-gradient(45% 60% at 85% 30%, #f3c6e2 0%, transparent 70%), radial-gradient(55% 55% at 50% 95%, #f6e9c0 0%, transparent 70%)",
+          }}
+        />
         <DiaDeco className="top-0 -left-16" />
         <DiaDeco className="right-0 bottom-0 scale-x-[-1]" />
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-32 text-center">
@@ -89,7 +98,7 @@ export default function Home() {
       </section>
 
       {/* 登場人物 */}
-      <section className="relative bg-[#eff4fd] py-16">
+      <section className="relative bg-[#f5f0f9] py-16">
         <p
           aria-hidden
           className="nine-watermark pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 font-display text-[7rem] font-bold tracking-[0.1em] whitespace-nowrap sm:text-[10rem]"

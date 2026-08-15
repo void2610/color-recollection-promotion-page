@@ -113,7 +113,7 @@ export function ScreenshotCarousel() {
                   alt={`${shot.alt}のスクリーンショット`}
                   width={1600}
                   height={900}
-                  className="h-auto w-full border border-nine-pale shadow-[0_2px_12px_rgba(0,71,137,0.12)] transition-opacity hover:opacity-85"
+                  className="h-auto w-full border border-nine-pale shadow-[0_2px_12px_rgba(45,42,110,0.12)] transition-opacity hover:opacity-85"
                 />
               </button>
             </div>
@@ -125,7 +125,7 @@ export function ScreenshotCarousel() {
         type="button"
         onClick={() => go(-1)}
         aria-label="前のスクリーンショット"
-        className="absolute top-1/2 -left-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue shadow-[0_2px_8px_rgba(0,71,137,0.2)] transition-colors hover:bg-nine-blue hover:text-white"
+        className="absolute top-1/2 -left-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue shadow-[0_2px_8px_rgba(45,42,110,0.2)] transition-colors hover:bg-nine-blue hover:text-white"
       >
         ‹
       </button>
@@ -133,7 +133,7 @@ export function ScreenshotCarousel() {
         type="button"
         onClick={() => go(1)}
         aria-label="次のスクリーンショット"
-        className="absolute top-1/2 -right-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue shadow-[0_2px_8px_rgba(0,71,137,0.2)] transition-colors hover:bg-nine-blue hover:text-white"
+        className="absolute top-1/2 -right-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue shadow-[0_2px_8px_rgba(45,42,110,0.2)] transition-colors hover:bg-nine-blue hover:text-white"
       >
         ›
       </button>
@@ -159,7 +159,7 @@ export function ScreenshotCarousel() {
           aria-modal="true"
           aria-label={`${SHOTS[zoomed].alt}の拡大表示`}
           onClick={closeZoom}
-          className={`lightbox-overlay ${closing ? "is-closing" : ""} fixed inset-0 z-[90] flex cursor-zoom-out items-center justify-center bg-[#001d38]/80 p-6 backdrop-blur-sm`}
+          className={`lightbox-overlay ${closing ? "is-closing" : ""} fixed inset-0 z-[90] flex cursor-zoom-out items-center justify-center bg-[#1c1636]/80 p-6 backdrop-blur-sm`}
         >
           {leaving !== null && (
             <figure

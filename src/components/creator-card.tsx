@@ -4,7 +4,7 @@ import type { Creator } from "@/data/creators";
 
 export function CreatorCard({ creator }: { creator: Creator }) {
   return (
-    <div className="relative h-full border-b-2 border-nine-blue bg-white p-6 shadow-[0_2px_12px_rgba(0,71,137,0.08)]">
+    <div className="relative h-full border-b-2 border-nine-blue bg-white p-6 shadow-[0_2px_12px_rgba(45,42,110,0.08)]">
       <span
         aria-hidden
         className="absolute right-0 bottom-0 h-0 w-0 border-b-8 border-l-8 border-b-nine-blue border-l-transparent"
