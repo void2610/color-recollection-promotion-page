@@ -12,7 +12,7 @@ export default function CreatorsPage() {
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16 min-h-[calc(100vh-120px)]">
       <SectionHeading en="CREATOR" ja="クリエイター" />
-      <p className="mb-8 text-[#333]/80">制作サークル: {CIRCLE_NAME}</p>
+      <p className="font-mincho mb-8 text-lg text-[#333]/80">制作サークル: {CIRCLE_NAME}</p>
       <div className="grid gap-6 sm:grid-cols-2">
         {CREATORS.map((creator) => (
           <CreatorCard key={creator.name} creator={creator} />

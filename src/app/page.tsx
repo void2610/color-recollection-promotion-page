@@ -119,7 +119,7 @@ export default function Home() {
       {/* クリエイター */}
       <section className="mx-auto max-w-5xl px-6 py-16">
         <SectionHeading en="CREATOR" ja="クリエイター" />
-        <p className="mb-8 text-[#333]">制作サークル: {CIRCLE_NAME}</p>
+        <p className="font-mincho mb-8 text-lg text-[#333]">制作サークル: {CIRCLE_NAME}</p>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {CREATORS.map((creator) => (
             <CreatorCard key={creator.name} creator={creator} />
