@@ -39,9 +39,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ja"
       suppressHydrationWarning
-      className={`${cormorant.variable} ${notoSansJp.variable} ${oswald.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${notoSansJp.variable} ${oswald.variable} h-full bg-white antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white font-sans text-[#333]">
+      <body className="min-h-full flex flex-col font-sans text-[#333]">
         <Providers>
           <SmoothScroll />
           <LoadingScreen />

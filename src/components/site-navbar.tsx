@@ -12,7 +12,7 @@ export function SiteNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="relative z-40 bg-white">
+    <header className="relative z-40">
       <Link href="/" className="absolute top-[60px] left-6 z-10 -translate-y-1/2">
         <Image
           src="/logo.svg"

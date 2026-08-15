@@ -23,8 +23,7 @@ export default function Home() {
     <main className="overflow-x-clip">
       {/* メインビジュアル */}
       <section className="relative">
-        {/* 左の菱形柄バンド + 縦書きキャプション (9-nine のサイド帯を再現) */}
-        <div aria-hidden className="nine-checker-light absolute inset-y-0 left-0 hidden w-44 lg:block" />
+        {/* 縦書きキャプション (9-nine のサイド帯を再現) */}
         <p
           className="absolute top-40 left-20 hidden font-display text-sm tracking-[0.5em] text-nine-blue lg:block"
           style={{ writingMode: "vertical-rl" }}
