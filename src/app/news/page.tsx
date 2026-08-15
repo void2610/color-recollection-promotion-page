@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NewsPage() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
+    <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16 min-h-[calc(100vh-120px)]">
       <SectionHeading en="NEWS" ja="最新情報" />
       <ul className="space-y-8">
         {NEWS.map((item) => (

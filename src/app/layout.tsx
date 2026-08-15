@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SmoothScroll />
           <LoadingScreen />
           <SiteNavbar />
-          <div className="flex-1">{children}</div>
+          <div className="flex flex-1 flex-col">{children}</div>
           <SiteFooter />
         </Providers>
       </body>
