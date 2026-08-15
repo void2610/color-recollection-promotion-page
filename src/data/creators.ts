@@ -1,6 +1,8 @@
 export type Creator = {
   name: string;
   roles: string[];
+  // public/ 配下のアイコンパス。未設定時は頭文字のフォールバック表示
+  icon?: string;
   x?: string;
   github?: string;
 };
@@ -26,6 +28,7 @@ export const CREATORS: Creator[] = [
   {
     name: "void2610",
     roles: ["プログラム"],
+    icon: "/creators/void2610.png",
     x: "https://twitter.com/void2610",
     github: "https://github.com/void2610",
   },

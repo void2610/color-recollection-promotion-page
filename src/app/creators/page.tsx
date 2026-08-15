@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { GithubIcon, XIcon } from "@/components/brand-icons";
 import { SectionHeading } from "@/components/section-heading";
 import { CIRCLE_NAME, CREATORS } from "@/data/creators";
@@ -16,7 +17,23 @@ export default function CreatorsPage() {
       <div className="grid gap-6 sm:grid-cols-2">
         {CREATORS.map((creator) => (
           <div key={creator.name} className="rounded-2xl border border-foreground/10 p-6">
-            <h3 className="text-xl font-bold">{creator.name}</h3>
+            {creator.icon ? (
+              <Image
+                src={creator.icon}
+                alt={`${creator.name} のアイコン`}
+                width={64}
+                height={64}
+                className="rounded-full border border-foreground/10"
+              />
+            ) : (
+              <div
+                aria-hidden
+                className="flex h-16 w-16 items-center justify-center rounded-full border border-foreground/10 bg-foreground/10 text-2xl font-bold text-foreground-500"
+              >
+                {creator.name.charAt(0)}
+              </div>
+            )}
+            <h3 className="mt-4 text-xl font-bold">{creator.name}</h3>
             <ul className="mt-1 text-sm text-foreground-500">
               {creator.roles.map((role) => (
                 <li key={role}>{role}</li>
