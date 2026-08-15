@@ -1,4 +1,5 @@
 import { GithubIcon, XIcon } from "@/components/brand-icons";
+import { CIRCLE_NAME } from "@/data/creators";
 import { SITE } from "@/data/site";
 
 export function SiteFooter() {
@@ -26,7 +27,7 @@ export function SiteFooter() {
           </a>
         </div>
         <p>
-          © 2026 void2610 — {SITE.title} ({SITE.titleEn})
+          © 2026 {CIRCLE_NAME} — {SITE.title} ({SITE.titleEn})
         </p>
       </div>
     </footer>
