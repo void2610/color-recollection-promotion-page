@@ -3,6 +3,7 @@ import { Cormorant_Infant, Noto_Sans_JP, Oswald } from "next/font/google";
 import { LoadingScreen } from "@/components/loading-screen";
 import { Providers } from "@/components/providers";
 import { SiteNavbar } from "@/components/site-navbar";
+import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-white font-sans text-[#333]">
         <Providers>
+          <SmoothScroll />
           <LoadingScreen />
           <SiteNavbar />
           <div className="flex-1">{children}</div>
