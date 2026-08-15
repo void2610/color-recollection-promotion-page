@@ -148,7 +148,7 @@ export function ScreenshotCarousel() {
               setIndex(COUNT + i);
             }}
             aria-label={`${i + 1}枚目を表示`}
-            className={`h-2.5 w-2.5 rotate-45 border border-nine-blue transition-colors ${i === ((index % COUNT) + COUNT) % COUNT ? "bg-nine-blue" : "bg-white hover:bg-nine-pale"}`}
+            className={`h-2.5 w-2.5 rotate-45 border border-nine-blue transition-colors ${i === ((index % COUNT) + COUNT) % COUNT ? "grad-primary border-0" : "bg-white hover:bg-nine-pale"}`}
           />
         ))}
       </div>

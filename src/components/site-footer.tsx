@@ -8,7 +8,7 @@ export function SiteFooter() {
   return (
     <footer className="relative">
       <div aria-hidden className="nine-dotted-edge" />
-      <div className="nine-checker-dark bg-nine-blue text-white">
+      <div className="grad-footer text-white">
         <div className="mx-auto max-w-6xl px-6 py-14">
           <nav className="border-l border-white/60 pl-8">
             <ul className="flex flex-wrap gap-x-10 gap-y-3 pt-6">

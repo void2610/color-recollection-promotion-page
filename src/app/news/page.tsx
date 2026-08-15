@@ -16,7 +16,7 @@ export default function NewsPage() {
           <li key={`${item.date}-${item.title}`} className="rounded-2xl border border-nine-pale p-6">
             <div className="flex flex-wrap items-center gap-3">
               <time className="font-mono text-sm text-[#333]/60">{item.date}</time>
-              <span className="rounded-full bg-nine-pale px-3 py-0.5 text-xs">
+              <span className="grad-primary rounded-full px-3 py-0.5 text-xs text-white">
                 {item.category}
               </span>
             </div>

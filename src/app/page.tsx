@@ -48,7 +48,7 @@ export default function Home() {
           </h1>
           <p className="font-mincho text-lg text-[#333]">{SITE.catchcopy}</p>
           <p className="max-w-xl text-sm leading-relaxed text-[#333]/70">{SITE.description}</p>
-          <span className="border border-nine-blue px-6 py-1.5 font-oswald text-sm tracking-[0.1em] text-nine-blue">
+          <span className="border-2 border-grad-primary px-6 py-1.5 font-oswald text-sm tracking-[0.1em] text-nine-blue">
             NOW IN DEVELOPMENT
           </span>
         </div>
@@ -64,7 +64,7 @@ export default function Home() {
                 <time className="font-oswald text-sm tracking-[0.1em] text-nine-blue">
                   {item.date.replaceAll("-", ".")}
                 </time>
-                <span className="border border-nine-blue px-3 py-0.5 text-xs text-nine-blue">
+                <span className="grad-primary px-3 py-0.5 text-xs text-white">
                   {item.category}
                 </span>
                 <span className="text-sm">{item.title}</span>

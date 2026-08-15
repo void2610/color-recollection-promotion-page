@@ -38,10 +38,49 @@ figcaption {
   --color-nine-sky: #e88bc4;
 }
 
-/* 濃紺→薄青のグラデーション罫線 (9-nine のセパレーター再現) */
+/* ゲーム UI 準拠のグラデーショントークン */
+:root {
+  /* ロゴの筆文字: 藍→青紫 */
+  --grad-primary: linear-gradient(115deg, #35327e, #4b47a0 45%, #7a63c4);
+  /* ホログラム調パステル (タイトルのボタン・キラキラ) */
+  --grad-holo: linear-gradient(100deg, #8ad4e8, #b7a6e3 35%, #f2b1d8 70%, #f6d9a0);
+  /* SteamPromo の帯: 紫→ピンク→オレンジ */
+  --grad-band: linear-gradient(90deg, #5a4fae, #b56ec0 50%, #e8987a);
+}
+
+.grad-primary {
+  background-image: var(--grad-primary);
+}
+
+.grad-holo {
+  background-image: var(--grad-holo);
+}
+
+/* グラデーション文字 */
+.text-grad-primary {
+  background-image: var(--grad-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* グラデーション枠線 */
+.border-grad-primary {
+  border-style: solid;
+  border-image: var(--grad-primary) 1;
+}
+
+/* 罫線もロゴ→ホログラムへ流れるグラデーション */
 .nine-hairline {
   border-bottom: 1px solid;
-  border-image: linear-gradient(to right, #3a3782, #3a3782 5%, #eae4f2) 1;
+  border-image: linear-gradient(to right, #3a3782, #b7a6e3 45%, #f2b1d8 75%, transparent) 1;
+}
+
+/* ゲームのボタンに付く4方向のキラキラ */
+.sparkle {
+  color: #f2b1d8;
+  text-shadow: 0 0 6px rgba(242, 177, 216, 0.8);
+  user-select: none;
 }
 
 /* 全ページ共通の菱形チェッカー背景 (9-nine 準拠: 左は濃く、右へ向かって薄く) */
@@ -68,6 +107,16 @@ body::before {
     transparent 0% 50%
   );
   background-size: 90px 90px;
+}
+
+/* フッター: 藍→紫グラデーション + 菱形柄の重ね掛け */
+.grad-footer {
+  background-image:
+    repeating-conic-gradient(from 45deg, rgba(255, 255, 255, 0.04) 0% 25%, transparent 0% 50%),
+    linear-gradient(160deg, #2c2963, #3a3782 55%, #55418f);
+  background-size:
+    90px 90px,
+    100% 100%;
 }
 
 .nine-checker-dark {
