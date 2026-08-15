@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ScreenshotCarousel } from "@/components/screenshot-carousel";
 import { SectionHeading } from "@/components/section-heading";
 import { CharacterCard } from "@/components/character-card";
 import { CreatorCard } from "@/components/creator-card";
@@ -128,21 +129,8 @@ export default function Home() {
             {SITE.titleEn}
           </span>
         </h3>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
-          <Image
-            src="/screenshots/title.jpg"
-            alt="タイトル画面のスクリーンショット"
-            width={1600}
-            height={900}
-            className="h-auto w-full border border-nine-pale shadow-[0_2px_12px_rgba(0,71,137,0.12)]"
-          />
-          <Image
-            src="/screenshots/novel.jpg"
-            alt="ノベルパートのスクリーンショット"
-            width={1600}
-            height={900}
-            className="h-auto w-full border border-nine-pale shadow-[0_2px_12px_rgba(0,71,137,0.12)]"
-          />
+        <div className="mx-auto mt-8 max-w-3xl">
+          <ScreenshotCarousel />
         </div>
         <dl className="mt-6">
           {SPEC_ROWS.map(([label, value]) => (
