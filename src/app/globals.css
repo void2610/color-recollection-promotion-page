@@ -40,12 +40,12 @@ figcaption {
 
 /* ゲーム UI 準拠のグラデーショントークン */
 :root {
-  /* ロゴの筆文字: 藍→青紫 */
-  --grad-primary: linear-gradient(115deg, #35327e, #4b47a0 45%, #7a63c4);
-  /* ホログラム調パステル (タイトルのボタン・キラキラ) */
-  --grad-holo: linear-gradient(100deg, #8ad4e8, #b7a6e3 35%, #f2b1d8 70%, #f6d9a0);
+  /* ロゴの筆文字: 藍→青紫→赤紫をはっきり出す */
+  --grad-primary: linear-gradient(115deg, #2c2a96, #6247c8 50%, #b35bd6);
+  /* ホログラム調 (タイトルのボタン・キラキラ) */
+  --grad-holo: linear-gradient(100deg, #5fcdf2, #9d84ec 35%, #f27fc8 70%, #f8c66f);
   /* SteamPromo の帯: 紫→ピンク→オレンジ */
-  --grad-band: linear-gradient(90deg, #5a4fae, #b56ec0 50%, #e8987a);
+  --grad-band: linear-gradient(90deg, #5a48c4, #d066c8 50%, #f0925f);
 }
 
 .grad-primary {
@@ -72,14 +72,16 @@ figcaption {
 
 /* 罫線もロゴ→ホログラムへ流れるグラデーション */
 .nine-hairline {
-  border-bottom: 1px solid;
-  border-image: linear-gradient(to right, #3a3782, #b7a6e3 45%, #f2b1d8 75%, transparent) 1;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(to right, #3a3782, #8a5cd8 35%, #f27fc8 65%, #5fcdf2 90%, transparent) 1;
 }
 
 /* ゲームのボタンに付く4方向のキラキラ */
 .sparkle {
-  color: #f2b1d8;
-  text-shadow: 0 0 6px rgba(242, 177, 216, 0.8);
+  color: #ff8fd0;
+  text-shadow:
+    0 0 8px rgba(255, 143, 208, 0.9),
+    0 0 16px rgba(95, 205, 242, 0.6);
   user-select: none;
 }
 
@@ -112,8 +114,8 @@ body::before {
 /* フッター: 藍→紫グラデーション + 菱形柄の重ね掛け */
 .grad-footer {
   background-image:
-    repeating-conic-gradient(from 45deg, rgba(255, 255, 255, 0.04) 0% 25%, transparent 0% 50%),
-    linear-gradient(160deg, #2c2963, #3a3782 55%, #55418f);
+    repeating-conic-gradient(from 45deg, rgba(255, 255, 255, 0.05) 0% 25%, transparent 0% 50%),
+    linear-gradient(160deg, #241f66, #4a3aa8 55%, #7c4bb8);
   background-size:
     90px 90px,
     100% 100%;

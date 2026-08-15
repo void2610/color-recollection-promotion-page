@@ -27,10 +27,10 @@ export default function Home() {
         {/* ゲーム UI のホログラム調パステルを淡く敷く */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-40"
+          className="pointer-events-none absolute inset-0 opacity-70"
           style={{
             background:
-              "radial-gradient(45% 60% at 15% 25%, #bfe6f2 0%, transparent 70%), radial-gradient(45% 60% at 85% 30%, #f3c6e2 0%, transparent 70%), radial-gradient(55% 55% at 50% 95%, #f6e9c0 0%, transparent 70%)",
+              "radial-gradient(45% 60% at 15% 25%, #9fdcf2 0%, transparent 70%), radial-gradient(45% 60% at 85% 30%, #f6a8d8 0%, transparent 70%), radial-gradient(55% 55% at 50% 95%, #f6dd9a 0%, transparent 70%)",
           }}
         />
         <DiaDeco className="top-0 -left-16" />
