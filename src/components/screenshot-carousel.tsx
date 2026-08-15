@@ -9,6 +9,9 @@ const SHOTS = [
   { src: "/screenshots/ehon.jpg", alt: "絵本パート" },
   { src: "/screenshots/taylor.jpg", alt: "ノベルパート (テイラー)" },
   { src: "/screenshots/select.jpg", alt: "依頼書選択画面" },
+  { src: "/screenshots/request.jpg", alt: "依頼書の詳細" },
+  { src: "/screenshots/craft.jpg", alt: "制作パート" },
+  { src: "/screenshots/cutin.jpg", alt: "イベントシーン" },
 ];
 
 const AUTO_ADVANCE_MS = 4500;
