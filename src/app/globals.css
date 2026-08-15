@@ -153,6 +153,37 @@ body::before {
   animation: lightbox-slide-from-left 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* 旧画像は送り方向へ抜けていく */
+@keyframes lightbox-slide-to-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+}
+
+@keyframes lightbox-slide-to-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+}
+
+.lightbox-slide-out-left {
+  animation: lightbox-slide-to-left 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lightbox-slide-out-right {
+  animation: lightbox-slide-to-right 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* 閉じるときは逆再生 */
 .lightbox-overlay.is-closing {
   animation: lightbox-overlay-in 0.25s ease-in reverse both;
@@ -166,7 +197,9 @@ body::before {
   .lightbox-overlay,
   .lightbox-figure,
   .lightbox-slide-next,
-  .lightbox-slide-prev {
+  .lightbox-slide-prev,
+  .lightbox-slide-out-left,
+  .lightbox-slide-out-right {
     animation: none;
   }
 }

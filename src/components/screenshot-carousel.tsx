@@ -24,10 +24,24 @@ export function ScreenshotCarousel() {
   // 0 = 開いた直後 (ズームフェード) / ±1 = 前後切り替え (スライド)
   const [zoomDir, setZoomDir] = useState(0);
 
-  const zoomStep = useCallback((delta: 1 | -1) => {
-    setZoomDir(delta);
-    setZoomed((z) => (z === null ? z : (z + delta + COUNT) % COUNT));
-  }, []);
+  // スライド中に重ねて表示する旧画像
+  const [leaving, setLeaving] = useState<number | null>(null);
+
+  const zoomStep = useCallback(
+    (delta: 1 | -1) => {
+      if (zoomed === null) return;
+      setZoomDir(delta);
+      setLeaving(zoomed);
+      setZoomed((zoomed + delta + COUNT) % COUNT);
+    },
+    [zoomed],
+  );
+
+  useEffect(() => {
+    if (leaving === null) return;
+    const timer = setTimeout(() => setLeaving(null), 400);
+    return () => clearTimeout(timer);
+  }, [leaving]);
 
   const closeZoom = useCallback(() => {
     setClosing(true);
@@ -147,6 +161,24 @@ export function ScreenshotCarousel() {
           onClick={closeZoom}
           className={`lightbox-overlay ${closing ? "is-closing" : ""} fixed inset-0 z-[90] flex cursor-zoom-out items-center justify-center bg-[#001d38]/80 p-6 backdrop-blur-sm`}
         >
+          {leaving !== null && (
+            <figure
+              key={`leaving-${leaving}`}
+              aria-hidden
+              className={`${zoomDir === 1 ? "lightbox-slide-out-left" : "lightbox-slide-out-right"} pointer-events-none absolute inset-0 flex flex-col items-center justify-center p-6`}
+            >
+              <Image
+                src={SHOTS[leaving].src}
+                alt=""
+                width={1600}
+                height={900}
+                className="max-h-[82vh] w-auto max-w-[90vw] shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
+              />
+              <figcaption className="mt-3 text-center font-oswald text-sm tracking-[0.2em] text-white">
+                {SHOTS[leaving].alt}（{leaving + 1} / {COUNT}）
+              </figcaption>
+            </figure>
+          )}
           <figure
             key={zoomed}
             onClick={(e) => e.stopPropagation()}
