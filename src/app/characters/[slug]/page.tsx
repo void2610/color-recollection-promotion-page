@@ -58,7 +58,7 @@ export default async function CharacterPage({ params }: Props) {
         )}
         <header className="mt-8">
           <p className="text-sm font-semibold" style={{ color: character.color }}>
-            {character.role} — {character.colorLabel}
+            {character.role}
           </p>
           <div className="mt-1 flex flex-wrap items-baseline gap-3">
             <h1 className="text-5xl font-bold">{character.name}</h1>
@@ -77,17 +77,6 @@ export default async function CharacterPage({ params }: Props) {
           <p>{character.description}</p>
           <p>{character.detail}</p>
         </div>
-
-        <ul className="mt-8 flex flex-wrap gap-2">
-          {character.traits.map((trait) => (
-            <li
-              key={trait}
-              className="rounded-full border border-nine-blue/30 px-3 py-1 text-xs text-[#333]/60"
-            >
-              {trait}
-            </li>
-          ))}
-        </ul>
 
         <h2 className="mt-12 text-xl font-bold">プロフィール</h2>
         <dl className="mt-4 divide-y divide-nine-pale overflow-hidden rounded-2xl border border-nine-pale">

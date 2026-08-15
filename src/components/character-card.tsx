@@ -37,22 +37,12 @@ export function CharacterCard({ character }: { character: Character }) {
           <span className="font-display text-sm text-nine-blue">{character.nameEn}</span>
         </div>
         <p className="mt-1 text-xs font-medium" style={{ color: character.color === "#eaeef5" ? "#004789" : character.color }}>
-          {character.role} — {character.colorLabel}
+          {character.role}
         </p>
         <blockquote className="mt-4 border-l-2 border-nine-blue/40 pl-3 text-sm italic text-[#333]/70">
           「{character.quote}」
         </blockquote>
         <p className="mt-4 text-sm leading-relaxed text-[#333]/80">{character.description}</p>
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {character.traits.map((trait) => (
-            <li
-              key={trait}
-              className="border border-nine-blue/30 px-3 py-1 text-xs text-nine-blue"
-            >
-              {trait}
-            </li>
-          ))}
-        </ul>
       </article>
     </Link>
   );
