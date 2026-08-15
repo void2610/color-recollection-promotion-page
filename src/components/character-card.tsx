@@ -1,8 +1,13 @@
+import Link from "next/link";
 import type { Character } from "@/data/characters";
 
 export function CharacterCard({ character }: { character: Character }) {
   return (
-    <article
+    <Link
+      href={`/characters/${character.slug}`}
+      className="block rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    >
+      <article
       className="rounded-2xl border border-foreground/10 bg-content1 p-6 transition-transform hover:-translate-y-1"
       style={{ borderTopColor: character.color, borderTopWidth: 3 }}
     >
@@ -27,6 +32,7 @@ export function CharacterCard({ character }: { character: Character }) {
           </li>
         ))}
       </ul>
-    </article>
+      </article>
+    </Link>
   );
 }
