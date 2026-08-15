@@ -129,7 +129,7 @@ export default function Home() {
             {SITE.titleEn}
           </span>
         </h3>
-        <div className="mx-auto mt-8 max-w-3xl">
+        <div className="mt-8">
           <ScreenshotCarousel />
         </div>
         <dl className="mt-6">
