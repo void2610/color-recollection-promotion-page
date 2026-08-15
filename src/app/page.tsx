@@ -141,7 +141,7 @@ export default function Home() {
         <div className="mt-8">
           <ScreenshotCarousel />
         </div>
-        <dl className="mt-6">
+        <dl className="font-mincho mt-6">
           {SPEC_ROWS.map(([label, value]) => (
             <div
               key={label}
