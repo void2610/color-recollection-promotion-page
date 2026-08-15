@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Infant, Noto_Sans_JP, Oswald } from "next/font/google";
+import { LoadingScreen } from "@/components/loading-screen";
 import { Providers } from "@/components/providers";
 import { SiteNavbar } from "@/components/site-navbar";
 import { SiteFooter } from "@/components/site-footer";
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-white font-sans text-[#333]">
         <Providers>
+          <LoadingScreen />
           <SiteNavbar />
           <div className="flex-1">{children}</div>
           <SiteFooter />
