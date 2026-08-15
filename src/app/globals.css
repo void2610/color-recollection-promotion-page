@@ -34,7 +34,7 @@ figcaption {
   --font-oswald: var(--font-oswald), sans-serif;
   --color-nine-blue: #3a3782;
   --color-nine-blue-hover: #4b47a0;
-  --color-nine-pale: #eae4f2;
+  --color-nine-pale: #e9dcea;
   --color-nine-sky: #e88bc4;
 }
 
@@ -94,7 +94,7 @@ body::before {
   pointer-events: none;
   background-image: repeating-conic-gradient(
     from 45deg,
-    rgba(45, 42, 110, 0.05) 0% 25%,
+    rgba(139, 96, 138, 0.09) 0% 25%,
     transparent 0% 50%
   );
   background-size: 90px 90px;
@@ -105,7 +105,7 @@ body::before {
 .nine-checker-light {
   background-image: repeating-conic-gradient(
     from 45deg,
-    rgba(45, 42, 110, 0.06) 0% 25%,
+    rgba(139, 96, 138, 0.1) 0% 25%,
     transparent 0% 50%
   );
   background-size: 90px 90px;
@@ -115,7 +115,7 @@ body::before {
 .grad-footer {
   background-image:
     repeating-conic-gradient(from 45deg, rgba(255, 255, 255, 0.05) 0% 25%, transparent 0% 50%),
-    linear-gradient(160deg, #241f66, #4a3aa8 55%, #7c4bb8);
+    linear-gradient(160deg, #3a2f4c, #504060 55%, #6b5480);
   background-size:
     90px 90px,
     100% 100%;
@@ -356,7 +356,7 @@ body::before {
 
 /* セクション背後のアウトライン透かし文字 */
 .nine-watermark {
-  -webkit-text-stroke: 1px rgba(45, 42, 110, 0.15);
+  -webkit-text-stroke: 1px rgba(139, 96, 138, 0.25);
   color: transparent;
   user-select: none;
 }

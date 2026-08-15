@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ja"
       suppressHydrationWarning
-      className={`${cormorant.variable} ${notoSerifJp.variable} ${notoSansJp.variable} ${oswald.variable} h-full bg-white antialiased`}
+      className={`${cormorant.variable} ${notoSerifJp.variable} ${notoSansJp.variable} ${oswald.variable} h-full bg-[#faf5f9] antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans text-[#333]">
         <Providers>

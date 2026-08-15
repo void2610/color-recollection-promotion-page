@@ -30,7 +30,7 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 opacity-70"
           style={{
             background:
-              "radial-gradient(45% 60% at 15% 25%, #9fdcf2 0%, transparent 70%), radial-gradient(45% 60% at 85% 30%, #f6a8d8 0%, transparent 70%), radial-gradient(55% 55% at 50% 95%, #f6dd9a 0%, transparent 70%)",
+              "radial-gradient(55% 70% at 20% 30%, #c9a3ca 0%, transparent 70%), radial-gradient(50% 65% at 82% 35%, #f0b5da 0%, transparent 70%), radial-gradient(45% 55% at 55% 95%, #b4bfe6 0%, transparent 70%)",
           }}
         />
         <DiaDeco className="top-0 -left-16" />
@@ -98,7 +98,7 @@ export default function Home() {
       </section>
 
       {/* 登場人物 */}
-      <section className="relative bg-[#f5f0f9] py-16">
+      <section className="relative bg-[#f5ecf3] py-16">
         <p
           aria-hidden
           className="nine-watermark pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 font-display text-[7rem] font-bold tracking-[0.1em] whitespace-nowrap sm:text-[10rem]"

@@ -159,7 +159,7 @@ export function ScreenshotCarousel() {
           aria-modal="true"
           aria-label={`${SHOTS[zoomed].alt}の拡大表示`}
           onClick={closeZoom}
-          className={`lightbox-overlay ${closing ? "is-closing" : ""} fixed inset-0 z-[90] flex cursor-zoom-out items-center justify-center bg-[#1c1636]/80 p-6 backdrop-blur-sm`}
+          className={`lightbox-overlay ${closing ? "is-closing" : ""} fixed inset-0 z-[90] flex cursor-zoom-out items-center justify-center bg-[#302030]/80 p-6 backdrop-blur-sm`}
         >
           {leaving !== null && (
             <figure
