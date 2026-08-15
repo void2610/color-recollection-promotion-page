@@ -83,7 +83,7 @@ body::before {
 }
 
 .page-enter {
-  animation: page-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  animation: page-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
 
 /* 遷移直後に画面全体を一瞬白で覆ってから消す */
@@ -99,7 +99,7 @@ body::before {
 
 .page-flash {
   pointer-events: none;
-  animation: page-flash 0.45s ease-out both;
+  animation: page-flash 0.8s ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
