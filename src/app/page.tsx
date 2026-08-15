@@ -2,7 +2,9 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { CharacterCard } from "@/components/character-card";
+import { CreatorCard } from "@/components/creator-card";
 import { CHARACTERS } from "@/data/characters";
+import { CIRCLE_NAME, CREATORS } from "@/data/creators";
 import { NEWS } from "@/data/news";
 import { SITE } from "@/data/site";
 
@@ -91,6 +93,20 @@ export default function Home() {
           ))}
         </div>
         <MoreLink href="/characters" label="登場人物をすべて見る" />
+      </section>
+
+      {/* クリエイター */}
+      <section className="border-t border-foreground/10 bg-content1/50">
+        <div className="mx-auto max-w-5xl px-6 py-16">
+          <SectionHeading en="Creators" ja="クリエイター" />
+          <p className="mb-8 text-foreground-600">制作サークル: {CIRCLE_NAME}</p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {CREATORS.map((creator) => (
+              <CreatorCard key={creator.name} creator={creator} />
+            ))}
+          </div>
+          <MoreLink href="/creators" label="クリエイターの詳細を見る" />
+        </div>
       </section>
 
       {/* 製品概要 */}
