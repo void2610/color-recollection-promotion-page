@@ -122,18 +122,51 @@ body::before {
   animation: lightbox-figure-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* 拡大表示中の前後切り替えは送り方向へスライド */
+@keyframes lightbox-slide-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes lightbox-slide-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.lightbox-slide-next {
+  animation: lightbox-slide-from-right 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.lightbox-slide-prev {
+  animation: lightbox-slide-from-left 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* 閉じるときは逆再生 */
 .lightbox-overlay.is-closing {
   animation: lightbox-overlay-in 0.25s ease-in reverse both;
 }
 
-.lightbox-overlay.is-closing .lightbox-figure {
+.lightbox-overlay.is-closing figure {
   animation: lightbox-figure-in 0.25s ease-in reverse both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .lightbox-overlay,
-  .lightbox-figure {
+  .lightbox-figure,
+  .lightbox-slide-next,
+  .lightbox-slide-prev {
     animation: none;
   }
 }

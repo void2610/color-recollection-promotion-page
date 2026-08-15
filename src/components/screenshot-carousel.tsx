@@ -21,6 +21,13 @@ export function ScreenshotCarousel() {
   const [animated, setAnimated] = useState(true);
   const [zoomed, setZoomed] = useState<number | null>(null);
   const [closing, setClosing] = useState(false);
+  // 0 = 開いた直後 (ズームフェード) / ±1 = 前後切り替え (スライド)
+  const [zoomDir, setZoomDir] = useState(0);
+
+  const zoomStep = useCallback((delta: 1 | -1) => {
+    setZoomDir(delta);
+    setZoomed((z) => (z === null ? z : (z + delta + COUNT) % COUNT));
+  }, []);
 
   const closeZoom = useCallback(() => {
     setClosing(true);
@@ -57,8 +64,8 @@ export function ScreenshotCarousel() {
     if (zoomed === null) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeZoom();
-      if (e.key === "ArrowRight") setZoomed((z) => (z === null ? z : (z + 1) % COUNT));
-      if (e.key === "ArrowLeft") setZoomed((z) => (z === null ? z : (z + COUNT - 1) % COUNT));
+      if (e.key === "ArrowRight") zoomStep(1);
+      if (e.key === "ArrowLeft") zoomStep(-1);
     };
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
@@ -66,7 +73,7 @@ export function ScreenshotCarousel() {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [zoomed, closeZoom]);
+  }, [zoomed, closeZoom, zoomStep]);
 
   return (
     <div className="relative">
@@ -80,7 +87,10 @@ export function ScreenshotCarousel() {
             <div key={`${shot.src}-${i}`} className="w-1/3 shrink-0 px-2">
               <button
                 type="button"
-                onClick={() => setZoomed(i % COUNT)}
+                onClick={() => {
+                  setZoomDir(0);
+                  setZoomed(i % COUNT);
+                }}
                 aria-label={`${shot.alt}を拡大表示`}
                 className="block w-full cursor-zoom-in"
               >
@@ -140,7 +150,7 @@ export function ScreenshotCarousel() {
           <figure
             key={zoomed}
             onClick={(e) => e.stopPropagation()}
-            className="lightbox-figure cursor-default"
+            className={`${zoomDir === 0 ? "lightbox-figure" : zoomDir === 1 ? "lightbox-slide-next" : "lightbox-slide-prev"} cursor-default`}
           >
             <Image
               src={SHOTS[zoomed].src}
@@ -157,7 +167,7 @@ export function ScreenshotCarousel() {
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              setZoomed((z) => (z === null ? z : (z + COUNT - 1) % COUNT));
+              zoomStep(-1);
             }}
             aria-label="前の画像"
             className="absolute top-1/2 left-6 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue transition-colors hover:bg-nine-blue hover:text-white"
@@ -168,7 +178,7 @@ export function ScreenshotCarousel() {
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              setZoomed((z) => (z === null ? z : (z + 1) % COUNT));
+              zoomStep(1);
             }}
             aria-label="次の画像"
             className="absolute top-1/2 right-6 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue transition-colors hover:bg-nine-blue hover:text-white"
