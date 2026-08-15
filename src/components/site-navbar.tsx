@@ -13,7 +13,7 @@ export function SiteNavbar() {
 
   return (
     <header className="relative z-40 bg-white">
-      <Link href="/" className="absolute top-6 left-6 z-10">
+      <Link href="/" className="absolute top-[60px] left-6 z-10 -translate-y-1/2">
         <Image
           src="/logo.svg"
           alt={SITE.title}
