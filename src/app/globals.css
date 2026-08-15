@@ -184,13 +184,33 @@ body::before {
   animation: lightbox-slide-to-right 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* 閉じるときは逆再生 */
+/* 閉じるとき (開きと同名 keyframes の reverse 再利用は再始動しないため専用に分ける) */
+@keyframes lightbox-overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes lightbox-figure-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+
 .lightbox-overlay.is-closing {
-  animation: lightbox-overlay-in 0.25s ease-in reverse both;
+  animation: lightbox-overlay-out 0.25s ease-in both;
 }
 
 .lightbox-overlay.is-closing figure {
-  animation: lightbox-figure-in 0.25s ease-in reverse both;
+  animation: lightbox-figure-out 0.25s ease-in both;
 }
 
 @media (prefers-reduced-motion: reduce) {
