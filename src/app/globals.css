@@ -70,6 +70,28 @@ body::before {
   background-position: bottom;
 }
 
+/* ページ遷移時に本文をふわっと表示する */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.page-enter {
+  animation: page-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter {
+    animation: none;
+  }
+}
+
 /* ロード画面のロゴのふわっとした出現 */
 @keyframes loading-logo-in {
   from {
