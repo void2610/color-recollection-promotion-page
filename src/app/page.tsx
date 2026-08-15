@@ -37,7 +37,7 @@ export default function Home() {
               className="h-auto w-[80vw] max-w-[520px]"
             />
           </h1>
-          <p className="text-lg text-[#333]">{SITE.catchcopy}</p>
+          <p className="font-mincho text-lg text-[#333]">{SITE.catchcopy}</p>
           <p className="max-w-xl text-sm leading-relaxed text-[#333]/70">{SITE.description}</p>
           <span className="border border-nine-blue px-6 py-1.5 font-oswald text-sm tracking-[0.1em] text-nine-blue">
             NOW IN DEVELOPMENT

@@ -41,7 +41,7 @@ export function SiteNavbar() {
                     <span className="font-display text-base tracking-[0.1em]">
                       {item.en}
                     </span>
-                    <span className="mt-1 text-[10px] tracking-[0.2em] text-nine-blue/70">
+                    <span className="font-mincho mt-1 text-[10px] tracking-[0.2em] text-nine-blue/70">
                       {item.ja}
                     </span>
                   </Link>

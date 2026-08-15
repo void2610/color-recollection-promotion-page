@@ -9,17 +9,27 @@ html {
   scrollbar-gutter: stable;
 }
 
-/* 明朝は詰まって見えるため、全体の字間・行間をゆったりめに */
+/* 全体の字間・行間をゆったりめに */
 body {
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   line-height: 1.9;
+}
+
+/* 見出し・引用・キャプションは明朝で品を出す */
+h1,
+h2,
+h3,
+h4,
+blockquote,
+figcaption {
+  font-family: var(--font-noto-serif-jp), "Hiragino Mincho ProN", serif;
 }
 
 /* 9-nine-project.com 準拠の配色・タイポグラフィ */
 @theme inline {
-  /* サイト全体は明朝寄り。UI 的な箇所は --font-gothic を明示して使う */
-  --font-sans: var(--font-noto-serif-jp), "Hiragino Mincho ProN", serif;
-  --font-gothic: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", sans-serif;
+  /* 本文はゴシック、見出し・引用は明朝 (font-mincho ユーティリティで指定) */
+  --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-mincho: var(--font-noto-serif-jp), "Hiragino Mincho ProN", serif;
   --font-display: var(--font-cormorant), serif;
   --font-oswald: var(--font-oswald), sans-serif;
   --color-nine-blue: #004789;
