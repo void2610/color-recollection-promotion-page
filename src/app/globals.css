@@ -71,19 +71,18 @@ body::before {
 }
 
 /* ページ遷移時に本文をふわっと表示する */
+/* transform を使うと内部の fixed 要素 (ライトボックス等) の基準が壊れるため opacity のみ */
 @keyframes page-enter {
   from {
     opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: none;
   }
 }
 
 .page-enter {
-  animation: page-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+  animation: page-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards;
 }
 
 /* 遷移直後に画面全体を一瞬白で覆ってから消す */

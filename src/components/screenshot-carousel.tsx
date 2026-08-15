@@ -19,6 +19,7 @@ const TRACK = [...SHOTS, ...SHOTS, ...SHOTS];
 export function ScreenshotCarousel() {
   const [index, setIndex] = useState(COUNT);
   const [animated, setAnimated] = useState(true);
+  const [zoomed, setZoomed] = useState<number | null>(null);
 
   const go = useCallback((delta: number) => {
     setAnimated(true);
@@ -37,9 +38,26 @@ export function ScreenshotCarousel() {
   };
 
   useEffect(() => {
+    if (zoomed !== null) return;
     const timer = setInterval(() => go(1), AUTO_ADVANCE_MS);
     return () => clearInterval(timer);
-  }, [go, index]);
+  }, [go, index, zoomed]);
+
+  // 拡大表示中は Esc で閉じ、背面のスクロールを止める
+  useEffect(() => {
+    if (zoomed === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setZoomed(null);
+      if (e.key === "ArrowRight") setZoomed((z) => (z === null ? z : (z + 1) % COUNT));
+      if (e.key === "ArrowLeft") setZoomed((z) => (z === null ? z : (z + COUNT - 1) % COUNT));
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [zoomed]);
 
   return (
     <div className="relative">
@@ -51,13 +69,20 @@ export function ScreenshotCarousel() {
         >
           {TRACK.map((shot, i) => (
             <div key={`${shot.src}-${i}`} className="w-1/3 shrink-0 px-2">
-              <Image
-                src={shot.src}
-                alt={`${shot.alt}のスクリーンショット`}
-                width={1600}
-                height={900}
-                className="h-auto w-full border border-nine-pale shadow-[0_2px_12px_rgba(0,71,137,0.12)]"
-              />
+              <button
+                type="button"
+                onClick={() => setZoomed(i % COUNT)}
+                aria-label={`${shot.alt}を拡大表示`}
+                className="block w-full cursor-zoom-in"
+              >
+                <Image
+                  src={shot.src}
+                  alt={`${shot.alt}のスクリーンショット`}
+                  width={1600}
+                  height={900}
+                  className="h-auto w-full border border-nine-pale shadow-[0_2px_12px_rgba(0,71,137,0.12)] transition-opacity hover:opacity-85"
+                />
+              </button>
             </div>
           ))}
         </div>
@@ -94,6 +119,59 @@ export function ScreenshotCarousel() {
           />
         ))}
       </div>
+
+      {zoomed !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${SHOTS[zoomed].alt}の拡大表示`}
+          onClick={() => setZoomed(null)}
+          className="fixed inset-0 z-[90] flex cursor-zoom-out items-center justify-center bg-[#001d38]/80 p-6 backdrop-blur-sm"
+        >
+          <figure onClick={(e) => e.stopPropagation()} className="cursor-default">
+            <Image
+              src={SHOTS[zoomed].src}
+              alt={`${SHOTS[zoomed].alt}のスクリーンショット`}
+              width={1600}
+              height={900}
+              className="max-h-[82vh] w-auto max-w-[90vw] shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
+            />
+            <figcaption className="mt-3 text-center font-oswald text-sm tracking-[0.2em] text-white">
+              {SHOTS[zoomed].alt}（{zoomed + 1} / {COUNT}）
+            </figcaption>
+          </figure>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setZoomed((z) => (z === null ? z : (z + COUNT - 1) % COUNT));
+            }}
+            aria-label="前の画像"
+            className="absolute top-1/2 left-6 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue transition-colors hover:bg-nine-blue hover:text-white"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setZoomed((z) => (z === null ? z : (z + 1) % COUNT));
+            }}
+            aria-label="次の画像"
+            className="absolute top-1/2 right-6 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue transition-colors hover:bg-nine-blue hover:text-white"
+          >
+            ›
+          </button>
+          <button
+            type="button"
+            onClick={() => setZoomed(null)}
+            aria-label="閉じる"
+            className="absolute top-6 right-6 flex h-11 w-11 items-center justify-center bg-white/90 text-xl text-nine-blue transition-colors hover:bg-nine-blue hover:text-white"
+          >
+            ×
+          </button>
+        </div>
+      )}
     </div>
   );
 }
