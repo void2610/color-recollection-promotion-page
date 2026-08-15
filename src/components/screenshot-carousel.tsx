@@ -20,6 +20,15 @@ export function ScreenshotCarousel() {
   const [index, setIndex] = useState(COUNT);
   const [animated, setAnimated] = useState(true);
   const [zoomed, setZoomed] = useState<number | null>(null);
+  const [closing, setClosing] = useState(false);
+
+  const closeZoom = useCallback(() => {
+    setClosing(true);
+    setTimeout(() => {
+      setZoomed(null);
+      setClosing(false);
+    }, 250);
+  }, []);
 
   const go = useCallback((delta: number) => {
     setAnimated(true);
@@ -47,7 +56,7 @@ export function ScreenshotCarousel() {
   useEffect(() => {
     if (zoomed === null) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setZoomed(null);
+      if (e.key === "Escape") closeZoom();
       if (e.key === "ArrowRight") setZoomed((z) => (z === null ? z : (z + 1) % COUNT));
       if (e.key === "ArrowLeft") setZoomed((z) => (z === null ? z : (z + COUNT - 1) % COUNT));
     };
@@ -57,7 +66,7 @@ export function ScreenshotCarousel() {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [zoomed]);
+  }, [zoomed, closeZoom]);
 
   return (
     <div className="relative">
@@ -125,10 +134,14 @@ export function ScreenshotCarousel() {
           role="dialog"
           aria-modal="true"
           aria-label={`${SHOTS[zoomed].alt}の拡大表示`}
-          onClick={() => setZoomed(null)}
-          className="fixed inset-0 z-[90] flex cursor-zoom-out items-center justify-center bg-[#001d38]/80 p-6 backdrop-blur-sm"
+          onClick={closeZoom}
+          className={`lightbox-overlay ${closing ? "is-closing" : ""} fixed inset-0 z-[90] flex cursor-zoom-out items-center justify-center bg-[#001d38]/80 p-6 backdrop-blur-sm`}
         >
-          <figure onClick={(e) => e.stopPropagation()} className="cursor-default">
+          <figure
+            key={zoomed}
+            onClick={(e) => e.stopPropagation()}
+            className="lightbox-figure cursor-default"
+          >
             <Image
               src={SHOTS[zoomed].src}
               alt={`${SHOTS[zoomed].alt}のスクリーンショット`}
@@ -164,7 +177,10 @@ export function ScreenshotCarousel() {
           </button>
           <button
             type="button"
-            onClick={() => setZoomed(null)}
+            onClick={(e) => {
+              e.stopPropagation();
+              closeZoom();
+            }}
             aria-label="閉じる"
             className="absolute top-6 right-6 flex h-11 w-11 items-center justify-center bg-white/90 text-xl text-nine-blue transition-colors hover:bg-nine-blue hover:text-white"
           >

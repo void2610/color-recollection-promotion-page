@@ -70,6 +70,74 @@ body::before {
   background-position: bottom;
 }
 
+/* スクロール出現 (9-nine の animFade 再現)。animation ではなく transition なので
+   表示後の computed transform は none になり、内部の fixed 要素の基準を壊さない */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ライトボックスの開閉 (背景フェード + 画像のズームフェード) */
+@keyframes lightbox-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbox-figure-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-overlay {
+  animation: lightbox-overlay-in 0.3s ease-out both;
+}
+
+.lightbox-figure {
+  animation: lightbox-figure-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 閉じるときは逆再生 */
+.lightbox-overlay.is-closing {
+  animation: lightbox-overlay-in 0.25s ease-in reverse both;
+}
+
+.lightbox-overlay.is-closing .lightbox-figure {
+  animation: lightbox-figure-in 0.25s ease-in reverse both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-overlay,
+  .lightbox-figure {
+    animation: none;
+  }
+}
+
 /* ページ遷移時に本文をふわっと表示する */
 /* transform を使うと内部の fixed 要素 (ライトボックス等) の基準が壊れるため opacity のみ */
 @keyframes page-enter {
