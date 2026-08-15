@@ -130,15 +130,6 @@ body::before {
   background-size: 90px 90px;
 }
 
-/* フッター上端のドット状ボーダー */
-.nine-dotted-edge {
-  height: 12px;
-  background-image: radial-gradient(circle at 50% 100%, #3a3782 55%, transparent 56%);
-  background-size: 14px 12px;
-  background-repeat: repeat-x;
-  background-position: bottom;
-}
-
 /* スクロール出現 (9-nine の animFade 再現)。animation ではなく transition なので
    表示後の computed transform は none になり、内部の fixed 要素の基準を壊さない */
 .reveal {

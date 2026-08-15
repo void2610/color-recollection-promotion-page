@@ -7,7 +7,6 @@ import { NAV_ITEMS, SITE } from "@/data/site";
 export function SiteFooter() {
   return (
     <footer className="relative">
-      <div aria-hidden className="nine-dotted-edge" />
       <div className="grad-footer text-white">
         <div className="mx-auto max-w-6xl px-6 py-14">
           <nav className="border-l border-white/60 pl-8">
