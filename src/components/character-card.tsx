@@ -14,7 +14,7 @@ export function CharacterCard({ character }: { character: Character }) {
           aria-hidden
           className="absolute right-0 bottom-0 h-0 w-0 border-b-8 border-l-8 border-b-nine-blue border-l-transparent"
         />
-        {character.image && (
+        {character.image ? (
           <div className="mb-4 flex h-64 items-end justify-center overflow-hidden">
             <Image
               src={character.image}
@@ -23,6 +23,13 @@ export function CharacterCard({ character }: { character: Character }) {
               height={1000}
               className="h-full w-auto object-contain object-bottom"
             />
+          </div>
+        ) : (
+          <div className="mb-4 flex h-64 flex-col items-center justify-center gap-4">
+            <span aria-hidden className="h-16 w-16 rotate-45 border border-nine-blue/25 bg-nine-pale/50" />
+            <span className="font-oswald text-xs tracking-[0.3em] text-nine-blue/50">
+              COMING SOON
+            </span>
           </div>
         )}
         <div className="flex items-baseline gap-3">
