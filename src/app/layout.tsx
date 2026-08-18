@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Cormorant_Infant, Noto_Sans_JP, Noto_Serif_JP, Oswald } from "next/font/google";
 import { LoadingScreen } from "@/components/loading-screen";
 import { Providers } from "@/components/providers";
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="flex flex-1 flex-col">{children}</div>
           <SiteFooter />
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
