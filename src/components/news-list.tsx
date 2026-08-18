@@ -76,9 +76,9 @@ export function NewsList({ items }: { items: NewsItem[] }) {
             <h3 className="nine-hairline mt-4 pb-3 text-xl font-bold text-nine-blue">
               {selected.title}
             </h3>
-            <p className="font-mincho mt-4 leading-loose text-[#333]/80">
-              {selected.body ?? "詳細は続報をお待ちください。"}
-            </p>
+            <div className="font-mincho mt-4 space-y-4 leading-loose text-[#333]/80">
+              {selected.body ?? <p>詳細は続報をお待ちください。</p>}
+            </div>
             <button
               type="button"
               onClick={close}
