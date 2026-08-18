@@ -30,19 +30,18 @@ export default async function CharacterPage({ params }: Props) {
 
   return (
     <main className="overflow-x-clip px-6 py-16">
-      {/* 中央見出し (9-nine のキャラ個別ページ準拠: 単色・控えめサイズ + 細罫線) */}
-      <div className="text-center">
-        <p className="font-display text-4xl font-semibold tracking-[0.15em] text-nine-blue">
+      {/* 中央見出し (9-nine 実測: EN 42px/0.075em, JA 12px/0.05em, 下 50px + コンテンツ幅の極薄罫線) */}
+      <div className="mx-auto max-w-5xl border-b border-nine-pale pt-6 pb-12 text-center">
+        <p className="font-display text-[42px] leading-none font-semibold tracking-[0.075em] text-nine-blue">
           CHARACTER
         </p>
-        <p className="mt-2 text-xs font-medium tracking-[0.4em] text-nine-blue">キャラクター</p>
+        <p className="mt-2.5 text-xs font-medium tracking-[0.05em] text-nine-blue">キャラクター</p>
       </div>
-      <div aria-hidden className="mx-auto mt-8 max-w-5xl border-b border-nine-blue/20" />
 
       {/* パンくず */}
       <nav
         aria-label="パンくず"
-        className="mx-auto mt-8 max-w-5xl font-oswald text-xs tracking-[0.2em] text-nine-blue"
+        className="mx-auto mt-6 max-w-5xl font-oswald text-xs tracking-[0.2em] text-nine-blue"
       >
         <Link href="/" className="hover:underline">
           HOME
