@@ -5,6 +5,25 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Character } from "@/data/characters";
 
+// 立ち絵は身長差で余白が異なるため、頭頂の位置 (top%) と体の中心 (cx%) を実測して揃える
+const ART_ALIGN: Record<string, { top: number; cx: number }> = {
+  taylor: { top: 4.2, cx: 45.8 },
+  cyan: { top: 1.0, cx: 52.1 },
+  m: { top: 2.6, cx: 49.8 },
+  soga: { top: 2.7, cx: 49.8 },
+  key: { top: 1.5, cx: 40.0 },
+};
+
+// 頭頂を枠内の指定位置に合わせるための style (画像の高さは枠に対する倍率で指定)
+function alignStyle(slug: string, heightRatio: number, headTopRatio: number) {
+  const { top, cx } = ART_ALIGN[slug] ?? { top: 2, cx: 50 };
+  return {
+    height: `${heightRatio * 100}%`,
+    top: `${(headTopRatio - (top / 100) * heightRatio) * 100}%`,
+    transform: `translateX(-${cx}%)`,
+  };
+}
+
 // hirahirahihiru.com 準拠: 左サムネイル一覧 / 中央に大きな絵 / 右にプロフィール文
 export function CharacterShowcase({ characters }: { characters: Character[] }) {
   const [current, setCurrent] = useState(characters[0]);
@@ -34,7 +53,8 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
                     alt=""
                     width={160}
                     height={400}
-                    className="absolute top-1 left-1/2 w-24 max-w-none -translate-x-1/2"
+                    className="absolute left-1/2 w-auto max-w-none"
+                    style={alignStyle(character.slug, 2.6, 0.06)}
                   />
                 ) : (
                   <span className="font-oswald absolute inset-0 flex items-center justify-center text-[9px] tracking-[0.2em] text-nine-blue/60">
@@ -58,7 +78,8 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
                 width={560}
                 height={1400}
                 priority
-                className="absolute top-[4%] left-1/2 h-[190%] w-auto max-w-none -translate-x-1/2"
+                className="absolute left-1/2 w-auto max-w-none"
+                style={alignStyle(current.slug, 1.9, 0.06)}
               />
             ) : (
               <span className="font-oswald absolute inset-0 flex items-center justify-center text-xs tracking-[0.3em] text-nine-blue/60">
@@ -79,7 +100,6 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
       <div key={current.slug} className="swap-in order-3 text-center lg:text-left">
         <p className="font-display text-sm tracking-[0.3em] text-nine-blue">{current.nameEn}</p>
         <h3 className="mt-1 text-4xl font-bold text-[#333]">{current.name}</h3>
-        <p className="mt-2 text-sm tracking-[0.1em] text-nine-blue">{current.role}</p>
         <blockquote className="mt-6 text-lg text-[#333]/80">「{current.quote}」</blockquote>
         <p className="mt-4 text-sm leading-loose text-[#333]/80">{current.description}</p>
         <Link
