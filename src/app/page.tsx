@@ -40,13 +40,16 @@ export default function Home() {
     <main className="overflow-x-clip">
       {/* 全セクションの背後に KV をぼかして敷く (参考サイトの固定背景の再現) */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <Image
-          src="/kv.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="scale-110 object-cover opacity-30 blur-md saturate-[0.8]"
-        />
+        {/* ヒーロー KV と同じ位置・スケールに揃え、スクロール後も同じ場所に顔の影が残るようにする */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[62%]">
+          <Image
+            src="/kv.jpg"
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 62vw, 100vw"
+            className="translate-y-10 object-cover object-[75%_center] opacity-30 blur-md saturate-[0.8]"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#faf5f9]/40 via-[#faf5f9]/70 to-[#faf5f9]/40" />
       </div>
 
@@ -59,10 +62,10 @@ export default function Home() {
             fill
             priority
             sizes="(min-width: 1024px) 62vw, 100vw"
-            className="object-cover object-[75%_center] opacity-40 lg:opacity-100"
+            className="translate-y-10 object-cover object-[75%_center] opacity-40 lg:opacity-100"
             style={{
               maskImage:
-                "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to top, transparent, black 40%)",
+                "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to bottom, transparent, black 8%, black 60%, transparent 100%)",
               maskComposite: "intersect",
               WebkitMaskComposite: "source-in",
             }}
