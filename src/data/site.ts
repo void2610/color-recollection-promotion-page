@@ -16,6 +16,12 @@ export const SITE = {
   },
 } as const;
 
+// ヒーローのストア導線。href 未確定のものは COMING SOON 表示
+export const STORES = [
+  { name: "Steam", note: "有料販売", href: undefined },
+  { name: "BOOTH", note: "無料体験版", href: undefined },
+] as const;
+
 export const NAV_ITEMS = [
   { href: "/", en: "HOME", ja: "ホーム" },
   { href: "/story", en: "STORY", ja: "ストーリー" },

@@ -332,3 +332,57 @@ body::before {
   color: transparent;
   user-select: none;
 }
+
+/* キャラ切り替え時のフェード (transform は使わず opacity のみ) */
+@keyframes swap-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.swap-in {
+  animation: swap-in 0.5s ease-out both;
+}
+
+/* ヒーロー下端の Scroll 指示線: 上から下へ流れる */
+@keyframes scroll-line {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+.scroll-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grad-primary);
+  animation: scroll-line 2s ease-in-out infinite;
+}
+
+/* トップの NEWS 枠: 一定高さで内側スクロール、細いグラデーションのつまみ */
+.news-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #8a5cd8 rgba(58, 55, 130, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swap-in,
+  .scroll-line::after {
+    animation: none;
+  }
+}
