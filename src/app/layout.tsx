@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Infant, Noto_Sans_JP, Noto_Serif_JP, Oswald } from "next/font/google";
 import { LoadingScreen } from "@/components/loading-screen";
 import { Providers } from "@/components/providers";
+import { TransitionOverlay } from "@/components/transition-overlay";
 import { SideRails } from "@/components/side-rails";
 import { SiteNavbar } from "@/components/site-navbar";
 import { SmoothScroll } from "@/components/smooth-scroll";
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col font-sans text-[#333]">
         <Providers>
           <SmoothScroll />
+          <TransitionOverlay />
           <LoadingScreen />
           <SiteNavbar />
           <SideRails />

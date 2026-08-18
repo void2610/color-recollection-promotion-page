@@ -300,29 +300,9 @@ body::before {
   animation: page-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s backwards;
 }
 
-/* 遷移直後に画面全体を一瞬白で覆ってから消す */
-@keyframes page-flash {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-.page-flash {
-  pointer-events: none;
-  animation: page-flash 1.3s ease-out both;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .page-enter,
-  .page-flash {
+  .page-enter {
     animation: none;
-  }
-  .page-flash {
-    display: none;
   }
 }
 

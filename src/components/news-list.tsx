@@ -38,12 +38,12 @@ export function NewsList({ items }: { items: NewsItem[] }) {
             <button
               type="button"
               onClick={() => setSelected(item)}
-              className="flex w-full flex-wrap items-center gap-4 py-5 text-left transition-colors hover:bg-nine-pale/40"
+              className="flex w-full cursor-pointer flex-wrap items-center gap-4 py-5 text-left transition-colors hover:bg-nine-pale/40"
             >
               <time className="font-oswald text-sm tracking-[0.1em] text-nine-blue">
                 {item.date.replaceAll("-", ".")}
               </time>
-              <span className="grad-primary px-3 py-0.5 text-xs text-white">{item.category}</span>
+              <span className="grad-primary w-20 py-0.5 text-center text-xs text-white">{item.category}</span>
               <span className="text-sm">{item.title}</span>
             </button>
           </li>
@@ -69,7 +69,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
               <time className="font-oswald text-sm tracking-[0.1em] text-nine-blue">
                 {selected.date.replaceAll("-", ".")}
               </time>
-              <span className="grad-primary px-3 py-0.5 text-xs text-white">
+              <span className="grad-primary w-20 py-0.5 text-center text-xs text-white">
                 {selected.category}
               </span>
             </div>
