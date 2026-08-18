@@ -7,11 +7,11 @@ import type { Character } from "@/data/characters";
 
 // 立ち絵は身長差で余白が異なるため、頭頂の位置 (top%) と体の中心 (cx%) を実測して揃える
 const ART_ALIGN: Record<string, { top: number; cx: number }> = {
-  taylor: { top: 4.2, cx: 45.8 },
-  cyan: { top: 1.0, cx: 52.1 },
-  m: { top: 2.6, cx: 49.8 },
-  soga: { top: 2.7, cx: 49.8 },
-  key: { top: 1.5, cx: 40.0 },
+  taylor: { top: 7.6, cx: 45.8 },
+  cyan: { top: 10.4, cx: 47 },
+  m: { top: 17.4, cx: 45 },
+  soga: { top: 2.0, cx: 43 },
+  key: { top: 1.5, cx: 48 },
 };
 
 // 頭頂を枠内の指定位置に合わせるための style (画像の高さは枠に対する倍率で指定)
@@ -54,7 +54,7 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
                     width={160}
                     height={400}
                     className="absolute left-1/2 w-auto max-w-none"
-                    style={alignStyle(character.slug, 2.6, 0.06)}
+                    style={alignStyle(character.slug, 2.6, 0.08)}
                   />
                 ) : (
                   <span className="font-oswald absolute inset-0 flex items-center justify-center text-[9px] tracking-[0.2em] text-nine-blue/60">
@@ -79,7 +79,7 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
                 height={1400}
                 priority
                 className="absolute left-1/2 w-auto max-w-none"
-                style={alignStyle(current.slug, 1.9, 0.06)}
+                style={alignStyle(current.slug, 1.9, 0.1)}
               />
             ) : (
               <span className="font-oswald absolute inset-0 flex items-center justify-center text-xs tracking-[0.3em] text-nine-blue/60">
