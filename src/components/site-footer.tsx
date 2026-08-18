@@ -10,13 +10,15 @@ export function SiteFooter() {
       <div className="grad-footer text-white">
         <div className="mx-auto max-w-6xl px-6 py-14">
           <nav className="border-l border-white/60 pl-8">
-            <ul className="flex flex-wrap gap-x-10 gap-y-3 pt-6">
+            <ul className="flex flex-wrap gap-x-10 gap-y-3 pt-2">
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="font-display text-base tracking-[0.15em] text-white/90 transition-colors hover:text-white"
+                    className="group relative block pt-4 font-display text-base tracking-[0.15em] text-white/90 transition-colors hover:text-white"
                   >
+                    {/* ヘッダーと同じ、上から伸びる縦線のホバー演出 */}
+                    <span className="absolute top-0 left-1/2 h-3 w-px origin-top -translate-x-1/2 scale-y-0 bg-white/70 transition-transform duration-500 ease-out group-hover:scale-y-100" />
                     {item.en}
                   </Link>
                 </li>
