@@ -11,8 +11,14 @@ export function SectionHeading({
 }) {
   if (align === "center") {
     return (
-      <div className="mb-12 flex flex-col items-center text-center">
-        <p className="text-grad-primary font-display text-5xl font-semibold tracking-[0.3em] sm:text-6xl">
+      <div className="relative mb-12 flex flex-col items-center text-center">
+        <p
+          aria-hidden
+          className="nine-watermark pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[6rem] font-bold tracking-[0.1em] whitespace-nowrap sm:text-[10rem]"
+        >
+          {en}
+        </p>
+        <p className="text-grad-primary relative font-display text-5xl font-semibold tracking-[0.3em] sm:text-6xl">
           {en}
         </p>
         <p className="mt-2 flex items-center gap-3 text-xs font-medium tracking-[0.3em] text-nine-blue">

@@ -181,12 +181,6 @@ export default function Home() {
 
       {/* 登場人物: サムネ選択式ショーケース */}
       <section className="relative py-24">
-        <p
-          aria-hidden
-          className="nine-watermark pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 font-display text-[7rem] font-bold tracking-[0.1em] whitespace-nowrap sm:text-[10rem]"
-        >
-          PROFILE
-        </p>
         <div className="relative mx-auto max-w-6xl px-6">
           <SectionHeading en="CHARACTER" ja="キャラクター" align="center" />
           <CharacterShowcase characters={CHARACTERS} />
