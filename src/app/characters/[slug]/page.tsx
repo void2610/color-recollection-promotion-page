@@ -79,9 +79,12 @@ export default async function CharacterPage({ params }: Props) {
         </div>
 
         <h2 className="mt-12 text-xl font-bold">プロフィール</h2>
-        <dl className="mt-4 divide-y divide-nine-pale overflow-hidden rounded-2xl border border-nine-pale">
+        <dl className="font-mincho mt-4">
           {character.profile.map(({ label, value }) => (
-            <div key={label} className="grid grid-cols-1 gap-1 p-4 sm:grid-cols-[10rem_1fr]">
+            <div
+              key={label}
+              className="nine-hairline grid grid-cols-1 gap-1 py-4 sm:grid-cols-[10rem_1fr]"
+            >
               <dt className="text-sm font-semibold text-[#333]/60">{label}</dt>
               <dd className="text-sm">{value}</dd>
             </div>
