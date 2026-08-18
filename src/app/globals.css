@@ -178,7 +178,8 @@ body::before {
   animation: lightbox-overlay-in 0.3s ease-out both;
 }
 
-.lightbox-figure {
+.lightbox-figure,
+.lightbox-panel {
   animation: lightbox-figure-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -269,7 +270,7 @@ body::before {
   animation: lightbox-overlay-out 0.25s ease-in both;
 }
 
-.lightbox-overlay.is-closing figure {
+.lightbox-overlay.is-closing :where(figure, .lightbox-panel) {
   animation: lightbox-figure-out 0.25s ease-in both;
 }
 

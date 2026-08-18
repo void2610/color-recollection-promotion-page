@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { NewsList } from "@/components/news-list";
 import { ScreenshotCarousel } from "@/components/screenshot-carousel";
 import { SectionHeading } from "@/components/section-heading";
 import { CharacterCard } from "@/components/character-card";
@@ -57,21 +58,7 @@ export default function Home() {
       {/* 最新情報 */}
       <section className="relative mx-auto max-w-5xl px-6 py-16">
         <SectionHeading en="NEWS" ja="ニュース" />
-        <ul>
-          {NEWS.slice(0, 6).map((item) => (
-            <li key={`${item.date}-${item.title}`} className="nine-hairline">
-              <div className="flex flex-wrap items-center gap-4 py-5">
-                <time className="font-oswald text-sm tracking-[0.1em] text-nine-blue">
-                  {item.date.replaceAll("-", ".")}
-                </time>
-                <span className="grad-primary px-3 py-0.5 text-xs text-white">
-                  {item.category}
-                </span>
-                <span className="text-sm">{item.title}</span>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <NewsList items={NEWS.slice(0, 6)} />
         <ViewMore href="/news" />
       </section>
 
