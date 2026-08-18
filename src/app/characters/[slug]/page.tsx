@@ -63,7 +63,7 @@ export default async function CharacterPage({ params }: Props) {
           {character.nameEn}
         </p>
 
-        <div className="relative border border-nine-blue/30 bg-white/70">
+        <div className="relative border border-nine-blue">
           {/* 斜めの淡色ウェッジ */}
           <div
             aria-hidden
@@ -72,7 +72,7 @@ export default async function CharacterPage({ params }: Props) {
               background: "linear-gradient(115deg, transparent 42%, rgba(233, 220, 234, 0.55) 42%)",
             }}
           />
-          <div className="relative grid gap-6 lg:grid-cols-[minmax(0,400px)_1fr]">
+          <div className="relative grid lg:grid-cols-2">
             {/* 立ち絵は枠の上へはみ出させる */}
             <div className="flex items-end justify-center px-6 lg:-mt-28">
               {character.image ? (
@@ -94,9 +94,9 @@ export default async function CharacterPage({ params }: Props) {
               )}
             </div>
 
-            <div className="px-6 py-10 lg:px-0 lg:pr-12">
+            <div className="px-6 py-10 lg:py-[60px] lg:pr-0 lg:pl-0">
               {/* 本家実測: タブはブロック左上に absolute の紺ベタ、白 Cormorant 12px 縦書き */}
-              <div className="relative pl-10">
+              <div className="relative pr-6 pl-9 lg:pr-[89px]">
                 <span
                   aria-hidden
                   className="absolute top-0 left-0 bg-nine-blue px-[1px] py-1 font-display text-xs tracking-[0.1em] text-white"
@@ -106,13 +106,13 @@ export default async function CharacterPage({ params }: Props) {
                 </span>
 
                 <div className="min-w-0">
-                <p className="font-display text-sm tracking-[0.2em] text-nine-blue">
+                <p className="font-display text-base tracking-[0.05em] text-nine-blue">
                   {character.nameEn}
                 </p>
-                <h1 className="mt-1 text-4xl font-bold text-nine-blue sm:text-5xl">
+                <h1 className="mt-3 font-mincho text-[46px] leading-none font-normal tracking-[0.05em] text-nine-blue">
                   {character.name}
                 </h1>
-                <p className="font-mincho mt-4 text-sm text-[#333]/70">「{character.quote}」</p>
+                <p className="font-mincho mt-[22px] text-sm text-nine-blue">「{character.quote}」</p>
 
                 <div className="font-mincho mt-6 space-y-4 text-sm leading-loose text-[#333]/80">
                   <p>{character.description}</p>
@@ -122,7 +122,7 @@ export default async function CharacterPage({ params }: Props) {
               </div>
 
               {/* SPEC */}
-              <div className="relative mt-10 pl-10">
+              <div className="relative mt-12 pr-6 pl-9">
                 <span
                   aria-hidden
                   className="absolute top-0 left-0 bg-nine-blue px-[1px] py-1 font-display text-xs tracking-[0.1em] text-white"
@@ -134,7 +134,7 @@ export default async function CharacterPage({ params }: Props) {
                     {character.profile.map(({ label, value }) => (
                       <div
                         key={label}
-                        className="grid grid-cols-[7rem_1fr] gap-2 py-1.5 text-sm"
+                        className="grid grid-cols-[115px_1fr] gap-2 py-1 text-sm"
                       >
                         <dt className="font-bold text-[#333]">{label}</dt>
                         <dd className="text-[#333]/80">{value}</dd>
