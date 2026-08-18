@@ -36,9 +36,6 @@ export function CharacterCard({ character }: { character: Character }) {
           <h3 className="text-2xl font-bold text-[#333]">{character.name}</h3>
           <span className="font-display text-sm text-nine-blue">{character.nameEn}</span>
         </div>
-        <p className="mt-1 text-xs font-medium" style={{ color: character.color === "#eaeef5" ? "#3a3782" : character.color }}>
-          {character.role}
-        </p>
         <blockquote className="mt-4 border-l-2 border-nine-blue/40 pl-3 text-sm italic text-[#333]/70">
           「{character.quote}」
         </blockquote>

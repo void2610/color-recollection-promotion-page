@@ -57,9 +57,6 @@ export default async function CharacterPage({ params }: Props) {
           </div>
         )}
         <header className="mt-8">
-          <p className="text-sm font-semibold" style={{ color: character.color }}>
-            {character.role}
-          </p>
           <div className="mt-1 flex flex-wrap items-baseline gap-3">
             <h1 className="text-5xl font-bold">{character.name}</h1>
             <span className="text-lg text-[#333]/60">{character.nameEn}</span>
