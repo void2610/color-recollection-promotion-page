@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { OutlineWatermark } from "@/components/outline-watermark";
 import { CHARACTERS } from "@/data/characters";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -56,12 +57,11 @@ export default async function CharacterPage({ params }: Props) {
 
       <section className="relative mx-auto mt-24 max-w-5xl">
         {/* 背景の英字透かし */}
-        <p
-          aria-hidden
-          className="nine-watermark pointer-events-none absolute -top-20 right-0 z-10 font-display text-[5rem] leading-none font-bold tracking-[0.05em] uppercase sm:text-[7rem]"
-        >
-          {character.nameEn}
-        </p>
+        <OutlineWatermark
+          text={character.nameEn.toUpperCase()}
+          align="end"
+          className="absolute -top-20 right-0 z-10 h-[5rem] w-full text-[5rem] tracking-[0.05em] sm:h-[7rem] sm:text-[7rem]"
+        />
 
         <div className="relative border border-nine-blue">
           {/* 斜めの淡色ウェッジ */}

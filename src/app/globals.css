@@ -326,13 +326,6 @@ body::before {
   }
 }
 
-/* セクション背後のアウトライン透かし文字 */
-.nine-watermark {
-  -webkit-text-stroke: 1px rgba(139, 96, 138, 0.25);
-  color: transparent;
-  user-select: none;
-}
-
 /* キャラ切り替え時のフェード (transform は使わず opacity のみ) */
 @keyframes swap-in {
   from {
