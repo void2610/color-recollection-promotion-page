@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     url: "/",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${SITE.title} -${SITE.titleEn}-`,
     description: SITE.seo.description,
   },
