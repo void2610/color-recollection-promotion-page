@@ -12,7 +12,7 @@ export const CIRCLE_NAME = "Pico2☆ミ";
 export const CREATORS: Creator[] = [
   {
     name: "余々暇",
-    roles: ["シナリオ", "キャラクターデザイン", "イラスト"],
+    roles: ["シナリオ", "キャラ", "イラスト"],
     icon: "/creators/yoyoka.jpg",
     x: "https://x.com/44ka_9ka",
   },
@@ -24,7 +24,7 @@ export const CREATORS: Creator[] = [
   },
   {
     name: "水かもめ",
-    roles: ["背景アーティスト"],
+    roles: ["背景"],
     icon: "/creators/mizukamome.png",
     x: "https://x.com/mizukamomeeee",
   },
