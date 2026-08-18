@@ -74,7 +74,7 @@ export default async function CharacterPage({ params }: Props) {
           />
           <div className="relative grid lg:grid-cols-2">
             {/* 立ち絵は枠の上へはみ出させる */}
-            <div className="flex items-end justify-center px-6 lg:-mt-28">
+            <div className="flex items-end justify-center px-6 lg:-mt-44">
               {character.image ? (
                 <Image
                   src={character.image}
@@ -82,7 +82,7 @@ export default async function CharacterPage({ params }: Props) {
                   width={500}
                   height={1400}
                   priority
-                  className="h-[520px] w-auto object-contain object-bottom drop-shadow-[18px_14px_14px_rgba(58,55,130,0.28)] sm:h-[720px]"
+                  className="h-[560px] w-auto max-w-none object-contain object-bottom drop-shadow-[18px_14px_14px_rgba(58,55,130,0.28)] sm:h-[860px]"
                 />
               ) : (
                 <div className="flex h-[420px] flex-col items-center justify-center gap-5 sm:h-[560px]">
