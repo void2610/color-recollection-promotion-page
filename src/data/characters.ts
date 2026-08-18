@@ -1,7 +1,20 @@
+// 立ち絵内の実体位置 (画像に対する %)。素材ごとに余白・縮尺が違うため表示側で揃えるのに使う
+export type CharacterArt = {
+  // 目視で合わせた頭頂 (髪飾り・小物を除く)
+  headTop: number;
+  // 足元 (アルファ実測)
+  feet: number;
+  // 顔の中心 x
+  cx: number;
+  // 身長 cm (表示サイズの比率に使う)
+  heightCm: number;
+};
+
 export type Character = {
   slug: string;
   // public/ 配下の立ち絵パス (未設定キャラは画像なし)
   image?: string;
+  art?: CharacterArt;
   name: string;
   nameEn: string;
   role: string;
@@ -20,6 +33,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "taylor",
     image: "/characters/taylor.png",
+    art: { headTop: 7.6, feet: 94.8, cx: 45.8, heightCm: 165 },
     name: "テイラー",
     nameEn: "Taylor",
     role: "主人公 / 仕立て屋",
@@ -41,6 +55,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "cyan",
     image: "/characters/cyan.png",
+    art: { headTop: 10.4, feet: 98.9, cx: 47, heightCm: 162 },
     name: "シアン",
     nameEn: "Cyan",
     role: "自動人形",
@@ -62,6 +77,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "m",
     image: "/characters/m.png",
+    art: { headTop: 17.4, feet: 96.8, cx: 45, heightCm: 156 },
     name: "エム",
     nameEn: "M",
     role: "自動人形",
@@ -83,6 +99,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "soga",
     image: "/characters/soga.png",
+    art: { headTop: 2.0, feet: 96.6, cx: 43, heightCm: 182 },
     name: "ソガ",
     nameEn: "Soga",
     role: "自動人形",
@@ -124,6 +141,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "key",
     image: "/characters/key.png",
+    art: { headTop: 1.5, feet: 98.4, cx: 48, heightCm: 178 },
     name: "キイ",
     nameEn: "Key",
     role: "助手",

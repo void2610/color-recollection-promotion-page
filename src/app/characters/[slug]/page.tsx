@@ -3,9 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OutlineWatermark } from "@/components/outline-watermark";
-import { CHARACTERS } from "@/data/characters";
+import { CHARACTERS, type CharacterArt } from "@/data/characters";
 
 type Props = { params: Promise<{ slug: string }> };
+
+// 頭頂〜足元が 身長 cm × PX_PER_CM になるよう画像の高さを決め、足元を親の底辺に合わせる
+const PX_PER_CM = 4.2;
+function standingStyle(art: CharacterArt | undefined) {
+  if (!art) return { height: "860px" };
+  const bodyFrac = (art.feet - art.headTop) / 100;
+  const height = (art.heightCm * PX_PER_CM) / bodyFrac;
+  return {
+    height: `${Math.round(height)}px`,
+    // 足元より下の余白ぶんだけ下げる。顔中心が列の中央に来るよう横にもずらす
+    transform: `translate(${(50 - art.cx).toFixed(1)}%, ${(100 - art.feet).toFixed(1)}%)`,
+  };
+}
 
 export function generateStaticParams() {
   return CHARACTERS.map((character) => ({ slug: character.slug }));
@@ -36,7 +49,9 @@ export default async function CharacterPage({ params }: Props) {
         <p className="font-display text-[42px] leading-none font-semibold tracking-[0.075em] text-nine-blue">
           CHARACTER
         </p>
-        <p className="mt-2.5 text-xs font-medium tracking-[0.05em] text-nine-blue">キャラクター</p>
+        <p className="mt-2.5 text-xs font-medium tracking-[0.05em] text-nine-blue">
+          キャラクター
+        </p>
       </div>
 
       {/* パンくず */}
@@ -55,7 +70,7 @@ export default async function CharacterPage({ params }: Props) {
         <span className="text-[#333]">{character.name}</span>
       </nav>
 
-      <section className="relative mx-auto mt-24 max-w-5xl">
+      <section className="relative mx-auto mt-24 max-w-5xl lg:mt-40">
         {/* 背景の英字透かし */}
         <OutlineWatermark
           text={character.nameEn.toUpperCase()}
@@ -69,55 +84,67 @@ export default async function CharacterPage({ params }: Props) {
             aria-hidden
             className="pointer-events-none absolute inset-0"
             style={{
-              background: "linear-gradient(115deg, transparent 42%, rgba(233, 220, 234, 0.55) 42%)",
+              background:
+                "linear-gradient(115deg, transparent 42%, rgba(233, 220, 234, 0.55) 42%)",
             }}
           />
           <div className="relative grid lg:grid-cols-2">
-            {/* 立ち絵は枠の上へはみ出させる */}
-            <div className="flex items-end justify-center px-6 lg:-mt-44">
-              {character.image ? (
-                <Image
-                  src={character.image}
-                  alt={character.name}
-                  width={500}
-                  height={1400}
-                  priority
-                  className="h-[560px] w-auto max-w-none object-contain object-bottom drop-shadow-[18px_14px_14px_rgba(58,55,130,0.28)] sm:h-[860px]"
-                />
-              ) : (
-                <div className="flex h-[420px] flex-col items-center justify-center gap-5 sm:h-[560px]">
-                  <span aria-hidden className="h-20 w-20 rotate-45 border border-nine-blue/25 bg-nine-pale/50" />
-                  <span className="font-oswald text-xs tracking-[0.3em] text-nine-blue/50">
-                    COMING SOON
-                  </span>
-                </div>
-              )}
+            {/* 立ち絵は身長比のサイズで足元を枠底に揃え、背の高いキャラほど枠の上へはみ出す */}
+            <div className="relative min-h-[420px] lg:min-h-0">
+              <div className="flex items-end justify-center px-6 lg:absolute lg:inset-x-0 lg:bottom-0">
+                {character.image ? (
+                  <Image
+                    src={character.image}
+                    alt={character.name}
+                    width={500}
+                    height={1400}
+                    priority
+                    className="w-auto max-w-none max-h-[75svh] lg:max-h-none object-contain drop-shadow-[18px_14px_14px_rgba(58,55,130,0.28)]"
+                    style={standingStyle(character.art)}
+                  />
+                ) : (
+                  <div className="flex h-[420px] flex-col items-center justify-center gap-5 sm:h-[560px]">
+                    <span
+                      aria-hidden
+                      className="h-20 w-20 rotate-45 border border-nine-blue/25 bg-nine-pale/50"
+                    />
+                    <span className="font-oswald text-xs tracking-[0.3em] text-nine-blue/50">
+                      COMING SOON
+                    </span>
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div className="px-6 py-10 lg:py-[60px] lg:pr-0 lg:pl-0">
+            <div className="px-6 py-10 lg:min-h-[600px] lg:py-[60px] lg:pr-0 lg:pl-0">
               {/* 本家実測: タブはブロック左上に absolute の紺ベタ、白 Cormorant 12px 縦書き */}
               <div className="relative border-l border-nine-blue/10 pr-6 pl-9 lg:pr-[89px]">
                 <span
                   aria-hidden
                   className="absolute top-0 left-0 -translate-x-1/2 bg-nine-blue font-display text-xs leading-[1.2] tracking-[0.1em] text-white"
-                  style={{ writingMode: "vertical-rl", padding: "4px 1px", left: "-1px" }}
+                  style={{
+                    writingMode: "vertical-rl",
+                    padding: "4px 1px",
+                    left: "-1px",
+                  }}
                 >
                   PROFILE
                 </span>
 
                 <div className="min-w-0">
-                <p className="font-display text-base leading-none tracking-[0.05em] text-nine-blue">
-                  {character.nameEn}
-                </p>
-                <h1 className="mt-3 font-mincho text-[46px] leading-none font-normal tracking-[0.05em] text-nine-blue">
-                  {character.name}
-                </h1>
-                <p className="font-mincho mt-[22px] text-sm text-nine-blue">「{character.quote}」</p>
+                  <p className="font-display text-base leading-none tracking-[0.05em] text-nine-blue">
+                    {character.nameEn}
+                  </p>
+                  <h1 className="mt-3 font-mincho text-[46px] leading-none font-normal tracking-[0.05em] text-nine-blue">
+                    {character.name}
+                  </h1>
+                  <p className="font-mincho mt-[22px] text-sm text-nine-blue">
+                    「{character.quote}」
+                  </p>
 
-                <div className="font-mincho mt-6 space-y-4 text-sm leading-loose text-[#333]/80">
-                  <p>{character.description}</p>
-                </div>
-
+                  <div className="font-mincho mt-6 space-y-4 text-sm leading-loose text-[#333]/80">
+                    <p>{character.description}</p>
+                  </div>
                 </div>
               </div>
 
@@ -126,20 +153,24 @@ export default async function CharacterPage({ params }: Props) {
                 <span
                   aria-hidden
                   className="absolute top-0 left-0 -translate-x-1/2 bg-nine-blue font-display text-xs leading-[1.2] tracking-[0.1em] text-white"
-                  style={{ writingMode: "vertical-rl", padding: "4px 1px", left: "-1px" }}
+                  style={{
+                    writingMode: "vertical-rl",
+                    padding: "4px 1px",
+                    left: "-1px",
+                  }}
                 >
                   SPEC
                 </span>
                 <dl className="min-w-0">
-                    {character.profile.map(({ label, value }) => (
-                      <div
-                        key={label}
-                        className="grid grid-cols-[115px_1fr] gap-2 py-2 text-sm leading-none"
-                      >
-                        <dt className="font-bold text-[#333]">{label}</dt>
-                        <dd className="text-[#333]/80">{value}</dd>
-                      </div>
-                    ))}
+                  {character.profile.map(({ label, value }) => (
+                    <div
+                      key={label}
+                      className="grid grid-cols-[115px_1fr] gap-2 py-2 text-sm leading-none"
+                    >
+                      <dt className="font-bold text-[#333]">{label}</dt>
+                      <dd className="text-[#333]/80">{value}</dd>
+                    </div>
+                  ))}
                 </dl>
               </div>
             </div>

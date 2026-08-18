@@ -3,23 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import type { Character } from "@/data/characters";
-
-// 立ち絵は身長差で余白が異なるため、頭頂の位置 (top%) と体の中心 (cx%) を実測して揃える
-const ART_ALIGN: Record<string, { top: number; cx: number }> = {
-  taylor: { top: 7.6, cx: 45.8 },
-  cyan: { top: 10.4, cx: 47 },
-  m: { top: 17.4, cx: 45 },
-  soga: { top: 2.0, cx: 43 },
-  key: { top: 1.5, cx: 48 },
-};
+import type { Character, CharacterArt } from "@/data/characters";
 
 // 頭頂を枠内の指定位置に合わせるための style (画像の高さは枠に対する倍率で指定)
-function alignStyle(slug: string, heightRatio: number, headTopRatio: number) {
-  const { top, cx } = ART_ALIGN[slug] ?? { top: 2, cx: 50 };
+function alignStyle(art: CharacterArt | undefined, heightRatio: number, headTopRatio: number) {
+  const { headTop, cx } = art ?? { headTop: 2, cx: 50 };
   return {
     height: `${heightRatio * 100}%`,
-    top: `${(headTopRatio - (top / 100) * heightRatio) * 100}%`,
+    top: `${(headTopRatio - (headTop / 100) * heightRatio) * 100}%`,
     transform: `translateX(-${cx}%)`,
   };
 }
@@ -54,7 +45,7 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
                     width={160}
                     height={400}
                     className="absolute left-1/2 w-auto max-w-none"
-                    style={alignStyle(character.slug, 2.6, 0.08)}
+                    style={alignStyle(character.art, 2.6, 0.08)}
                   />
                 ) : (
                   <span className="font-oswald absolute inset-0 flex items-center justify-center text-[9px] tracking-[0.2em] text-nine-blue/60">
@@ -79,7 +70,7 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
                 height={1400}
                 priority
                 className="absolute left-1/2 w-auto max-w-none"
-                style={alignStyle(current.slug, 1.9, 0.1)}
+                style={alignStyle(current.art, 1.9, 0.1)}
               />
             ) : (
               <span className="font-oswald absolute inset-0 flex items-center justify-center text-xs tracking-[0.3em] text-nine-blue/60">
