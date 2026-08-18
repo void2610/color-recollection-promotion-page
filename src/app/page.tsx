@@ -5,6 +5,7 @@ import { ScreenshotCarousel } from "@/components/screenshot-carousel";
 import { SectionHeading } from "@/components/section-heading";
 import { CharacterShowcase } from "@/components/character-showcase";
 import { DiaDeco } from "@/components/dia-deco";
+import { ScrollHint } from "@/components/scroll-hint";
 import { ViewMore } from "@/components/view-more";
 import { CHARACTERS } from "@/data/characters";
 import { CIRCLE_NAME, CREATORS } from "@/data/creators";
@@ -140,10 +141,7 @@ export default function Home() {
           </ul>
         </div>
 
-        <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
-          <span className="font-oswald text-xs tracking-[0.3em] text-nine-blue">Scroll</span>
-          <span aria-hidden className="scroll-line relative block h-14 w-px bg-nine-blue/20" />
-        </div>
+        <ScrollHint />
       </section>
 
       {/* 最新情報: 一定高さで内側スクロール */}
