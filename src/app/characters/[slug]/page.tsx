@@ -94,17 +94,18 @@ export default async function CharacterPage({ params }: Props) {
               )}
             </div>
 
-            <div className="flex gap-5 px-6 py-10 lg:px-0 lg:pr-12">
-              {/* PROFILE の縦タブ */}
-              <span
-                aria-hidden
-                className="grad-primary h-fit px-1 py-3 font-oswald text-[10px] tracking-[0.2em] text-white"
-                style={{ writingMode: "vertical-rl" }}
-              >
-                PROFILE
-              </span>
+            <div className="px-6 py-10 lg:px-0 lg:pr-12">
+              {/* 本家実測: タブはブロック左上に absolute の紺ベタ、白 Cormorant 12px 縦書き */}
+              <div className="relative pl-10">
+                <span
+                  aria-hidden
+                  className="absolute top-0 left-0 bg-nine-blue px-[1px] py-1 font-display text-xs tracking-[0.1em] text-white"
+                  style={{ writingMode: "vertical-rl" }}
+                >
+                  PROFILE
+                </span>
 
-              <div className="min-w-0 flex-1">
+                <div className="min-w-0">
                 <p className="font-display text-sm tracking-[0.2em] text-nine-blue">
                   {character.nameEn}
                 </p>
@@ -117,16 +118,19 @@ export default async function CharacterPage({ params }: Props) {
                   <p>{character.description}</p>
                 </div>
 
-                {/* SPEC */}
-                <div className="mt-10 flex gap-5">
-                  <span
-                    aria-hidden
-                    className="grad-primary h-fit px-1 py-3 font-oswald text-[10px] tracking-[0.2em] text-white"
-                    style={{ writingMode: "vertical-rl" }}
-                  >
-                    SPEC
-                  </span>
-                  <dl className="min-w-0 flex-1">
+                </div>
+              </div>
+
+              {/* SPEC */}
+              <div className="relative mt-10 pl-10">
+                <span
+                  aria-hidden
+                  className="absolute top-0 left-0 bg-nine-blue px-[1px] py-1 font-display text-xs tracking-[0.1em] text-white"
+                  style={{ writingMode: "vertical-rl" }}
+                >
+                  SPEC
+                </span>
+                <dl className="min-w-0">
                     {character.profile.map(({ label, value }) => (
                       <div
                         key={label}
@@ -136,8 +140,7 @@ export default async function CharacterPage({ params }: Props) {
                         <dd className="text-[#333]/80">{value}</dd>
                       </div>
                     ))}
-                  </dl>
-                </div>
+                </dl>
               </div>
             </div>
           </div>
