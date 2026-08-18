@@ -38,23 +38,19 @@ const STORY_PARAGRAPHS = [
 export default function Home() {
   return (
     <main className="overflow-x-clip">
-      {/* 全セクションの背後に KV をぼかして敷く (参考サイトの固定背景の再現) */}
-      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        {/* ヒーロー KV と同じ位置・スケールに揃え、スクロール後も同じ場所に顔の影が残るようにする */}
-        <div className="absolute inset-y-0 left-0 w-full lg:w-[62%]">
+      {/* ヒーロー: 左 3/5 に KV、右 2/5 にロゴ・ストア導線・最新トピック */}
+      <section className="relative -mt-[120px] min-h-[100svh] overflow-hidden pt-[120px]">
+        {/* ヒーロー全体の背後に KV をぼかして敷く (ヒーローと一緒にスクロールして消える) */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
           <Image
             src="/kv.jpg"
             alt=""
             fill
-            sizes="(min-width: 1024px) 62vw, 100vw"
-            className="translate-y-10 object-cover object-[75%_center] opacity-30 blur-md saturate-[0.8]"
+            sizes="100vw"
+            className="scale-110 object-cover opacity-30 blur-md saturate-[0.8]"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#faf5f9]/40 via-[#faf5f9]/70 to-[#faf5f9]/40" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#faf5f9]/40 via-[#faf5f9]/70 to-[#faf5f9]/40" />
-      </div>
-
-      {/* ヒーロー: 左 3/5 に KV、右 2/5 にロゴ・ストア導線・最新トピック */}
-      <section className="relative -mt-[120px] min-h-[100svh] pt-[120px]">
         <div className="absolute inset-y-0 left-0 w-full lg:w-[62%]">
           <Image
             src="/kv.jpg"
