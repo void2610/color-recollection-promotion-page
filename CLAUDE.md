@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## プロジェクト概要
 
-ノベルゲーム「カラーリコレクション」(制作: Pico2☆ミ) の公式サイト。Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + HeroUI v2。レイアウトは https://9-nine-project.com/ を、配色・質感はゲーム本体の UI 素材を再現している。
+ノベルゲーム「カラーリコレクション」(制作: Pico2☆ミ) の公式サイト。Next.js 16 (App Router) + TypeScript + Tailwind CSS v4 + HeroUI v2。レイアウトは https://9-nine-project.com/ (共通パーツ・下層ページ) と https://hirahirahihiru.com/ (トップページ: 全画面ヒーロー + 中央見出しのセクション縦積み) を、配色・質感はゲーム本体の UI 素材を再現している。
 
 - **デプロイ**: Vercel 接続済み。main へ push するだけで自動デプロイされる (ブランチ / PR は使っていない)
 - **検証**: `npm run build` と `npm run lint` (eslint) を通してからコミットする。テストは無い
