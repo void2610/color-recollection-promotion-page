@@ -18,7 +18,7 @@ export const SITE = {
 
 // ヒーローのストア導線。href 未確定のものは COMING SOON 表示
 export const STORES = [
-  { name: "Steam", note: "有料販売", href: "https://store.steampowered.com/app/4848670/" },
+  { name: "Steam", note: "ウィッシュリスト登録受付中", href: "https://store.steampowered.com/app/4848670/" },
   { name: "BOOTH", note: "無料体験版", href: undefined },
 ] as const;
 
