@@ -2,17 +2,28 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NAV_ITEMS, SITE } from "@/data/site";
 
 // 9-nine 準拠: 中央寄せ・EN 大 + JA 小の2段ナビ
 export function SiteNavbar() {
-  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // スクロール後は下地を敷いて本文と混ざらないようにする (ヒーロー上では透明のまま)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="relative z-40">
+    <header
+      className={`sticky top-0 z-40 transition-[background-color,box-shadow] duration-500 ${
+        scrolled ? "bg-[#faf5f9]/80 shadow-[0_2px_16px_rgba(58,55,130,0.08)] backdrop-blur-md" : ""
+      }`}
+    >
       <Link href="/" className="absolute top-[60px] left-6 z-10 -translate-y-1/2">
         <Image
           src="/logo.svg"
@@ -28,16 +39,13 @@ export function SiteNavbar() {
         <nav className="hidden sm:block">
           <ul className="flex">
             {NAV_ITEMS.map((item) => {
-              const isActive = pathname === item.href;
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     className="group relative flex h-[120px] flex-col items-center justify-center px-6 text-nine-blue"
                   >
-                    <span
-                      className={`absolute top-3 left-1/2 h-8 w-px -translate-x-1/2 bg-nine-blue/60 transition-transform origin-top ${isActive ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`}
-                    />
+                    <span className="absolute top-3 left-1/2 h-8 w-px origin-top -translate-x-1/2 scale-y-0 bg-nine-blue/60 transition-transform duration-500 ease-out group-hover:scale-y-100" />
                     <span className="font-display text-base tracking-[0.1em]">
                       {item.en}
                     </span>
