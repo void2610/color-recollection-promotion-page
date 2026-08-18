@@ -10,6 +10,12 @@ export const SITE = {
   price: "700円〜1,000円程度 (予定)",
   distribution: "Steam (有料販売) / BOOTH (無料体験版)",
   status: "開発中",
+  // OGP / meta description。参考: ATRI・ヒラヒラヒヒル等の公式サイト (キャッチ → 内容 → ジャンル → 制作・配信状況)
+  seo: {
+    siteName: "カラーリコレクション 公式サイト",
+    description:
+      "「その色は、誰かの記憶でできている。」修正依頼に出された自動人形たちと対話し、彼らの運命を決める近未来ヒューマンドラマADV。Pico2☆ミ制作、Steam ストアページ公開・ウィッシュリスト登録受付中。",
+  },
   links: {
     github: "https://github.com/void2610",
     twitter: "https://twitter.com/void2610",

@@ -8,6 +8,7 @@ import { SideRails } from "@/components/side-rails";
 import { SiteNavbar } from "@/components/site-navbar";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
+import { SITE } from "@/data/site";
 import "./globals.css";
 
 const cormorant = Cormorant_Infant({
@@ -34,13 +35,31 @@ const oswald = Oswald({
   subsets: ["latin"],
 });
 
+// Vercel の本番ドメインを OGP の絶対 URL 解決に使う (ローカルでは localhost)
+const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "カラーリコレクション | 公式サイト",
-    template: "%s | カラーリコレクション",
+    default: `${SITE.title} | 公式サイト`,
+    template: `%s | ${SITE.title}`,
   },
-  description:
-    "【修正依頼】に出された自動人形たちと対話し、彼らの運命を決める、近未来ヒューマンドラマADV「カラーリコレクション」公式サイト",
+  description: SITE.seo.description,
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    siteName: SITE.seo.siteName,
+    title: `${SITE.title} -${SITE.titleEn}-`,
+    description: SITE.seo.description,
+    url: "/",
+  },
+  twitter: {
+    card: "summary",
+    title: `${SITE.title} -${SITE.titleEn}-`,
+    description: SITE.seo.description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
