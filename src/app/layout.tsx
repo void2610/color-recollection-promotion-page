@@ -9,6 +9,7 @@ import { SiteNavbar } from "@/components/site-navbar";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
 import { SITE } from "@/data/site";
+import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const cormorant = Cormorant_Infant({
@@ -35,11 +36,6 @@ const oswald = Oswald({
   subsets: ["latin"],
 });
 
-// Vercel の本番ドメインを OGP の絶対 URL 解決に使う (ローカルでは localhost)
-const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "http://localhost:3000";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -60,6 +56,24 @@ export const metadata: Metadata = {
     title: `${SITE.title} -${SITE.titleEn}-`,
     description: SITE.seo.description,
   },
+  // canonical はここに置かない。metadata を書き忘れたページがトップの canonical を
+  // 継承し、重複扱いでインデックスから落ちるため、各ページで pageMetadata() から出す。
+  // 既定でも index されるが、Google に大きい画像プレビューと長い抜粋を許可するには明示が要る
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  // Search Console の所有権確認。DNS やアナリティクスで確認済みなら未設定のままでよい
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

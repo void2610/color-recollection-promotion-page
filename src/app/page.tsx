@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/json-ld";
 import { NewsList } from "@/components/news-list";
 import { ScreenshotCarousel } from "@/components/screenshot-carousel";
 import { SectionHeading } from "@/components/section-heading";
@@ -11,6 +13,7 @@ import { CHARACTERS } from "@/data/characters";
 import { CIRCLE_NAME, CREATORS } from "@/data/creators";
 import { NEWS } from "@/data/news";
 import { SITE, STORES } from "@/data/site";
+import { siteJsonLd } from "@/lib/structured-data";
 
 const SPEC_ROWS = [
   ["タイトル", SITE.title],
@@ -35,10 +38,18 @@ const STORY_PARAGRAPHS = [
   ],
 ];
 
+// タイトル・OGP はルートレイアウトのものがそのままトップページ用なので canonical だけ足す
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 // hirahirahihiru.com 準拠のトップ構成: 全画面ヒーロー (KV 左 / 情報右) → 中央見出しのセクション縦積み
 export default function Home() {
   return (
     <main className="overflow-x-clip">
+      {/* サイト・サークル・作品の構造化データ (検索エンジン / AI クローラー向け) */}
+      <JsonLd data={siteJsonLd()} />
+
       {/* ヒーロー: 左 3/5 に KV、右 2/5 にロゴ・ストア導線・最新トピック */}
       <section className="relative -mt-[120px] min-h-[100svh] overflow-hidden pt-[120px]">
         {/* ヒーロー全体の背後に KV をぼかして敷く (ヒーローと一緒にスクロールして消える) */}

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { SectionHeading } from "@/components/section-heading";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "ストーリー",
-  description: "カラーリコレクションのストーリーと世界観",
-};
+  description:
+    "近未来のフランスを舞台にした「カラーリコレクション」のあらすじと、仕立て屋・オーダーメイドのオートマタ・修正依頼・フェード現象といった世界観キーワード。",
+  path: "/story",
+});
 
 export default function StoryPage() {
   return (

@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { CreatorCard } from "@/components/creator-card";
 import { SectionHeading } from "@/components/section-heading";
 import { CIRCLE_NAME, CREATORS } from "@/data/creators";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "クリエイター",
-  description: "カラーリコレクションの制作者紹介",
-};
+  description: `「カラーリコレクション」を制作したサークル ${CIRCLE_NAME} のメンバー紹介。`,
+  path: "/creators",
+});
 
 export default function CreatorsPage() {
   return (
