@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/json-ld";
 import { OutlineWatermark } from "@/components/outline-watermark";
 import { CHARACTERS, type CharacterArt } from "@/data/characters";
+import { pageMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -28,10 +31,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const character = CHARACTERS.find((c) => c.slug === slug);
   if (!character) return {};
-  return {
+  return pageMetadata({
     title: `${character.name} | 登場人物`,
     description: character.description,
-  };
+    path: `/characters/${character.slug}`,
+  });
 }
 
 export default async function CharacterPage({ params }: Props) {
@@ -44,6 +48,15 @@ export default async function CharacterPage({ params }: Props) {
 
   return (
     <main className="overflow-x-clip px-6 py-16">
+      {/* 下のパンくずと同じ階層を構造化データでも伝える */}
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "HOME", path: "/" },
+          { name: "CHARACTER", path: "/characters" },
+          { name: character.name },
+        ])}
+      />
+
       {/* 中央見出し (9-nine 実測: EN 42px/0.075em, JA 12px/0.05em, 下 50px + コンテンツ幅の極薄罫線) */}
       <div className="mx-auto max-w-5xl border-b border-nine-pale pt-6 pb-12 text-center">
         <p className="font-display text-[42px] leading-none font-semibold tracking-[0.075em] text-nine-blue">

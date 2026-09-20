@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { SectionHeading } from "@/components/section-heading";
 import { CharacterCard } from "@/components/character-card";
 import { CHARACTERS } from "@/data/characters";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "登場人物",
-  description: "カラーリコレクションの登場人物紹介",
-};
+  description: `「カラーリコレクション」に登場するキャラクターの紹介。${CHARACTERS.map((c) => c.name).join("、")}。`,
+  path: "/characters",
+});
 
 export default function CharactersPage() {
   return (

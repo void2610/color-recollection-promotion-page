@@ -22,6 +22,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 画像素材 (`public/characters/`, `public/screenshots/`, `logo.svg`) はゲーム側リポジトリからコピーしたもの。差し替え時は sips でリサイズ・JPEG 化して軽量化する。
 
+## SEO / クローラー対応
+
+絶対 URL・canonical・OGP の組み立ては `src/lib/seo.ts` に集約している。
+
+- **公開 URL**: `SITE_URL` は `NEXT_PUBLIC_SITE_URL` → Vercel の `VERCEL_PROJECT_PRODUCTION_URL` (独自ドメインがあればそれが入る) → localhost の順で解決。独自ドメインを当てたら Vercel 側に `NEXT_PUBLIC_SITE_URL` を設定すると確実
+- **robots.txt / sitemap.xml**: `src/app/robots.ts` / `src/app/sitemap.ts` がビルド時に生成する。**ページを増やしたら sitemap.ts にパスを足す** (自動収集はしていない)。プレビューデプロイ (`VERCEL_ENV !== "production"`) は本番と内容が重複するので robots.txt で全面拒否している
+- **下層ページの metadata は必ず `pageMetadata({ title, description, path })` で組む**。canonical・og:title・og:url・OG 画像がまとめて入る
+- **構造化データ (JSON-LD)**: ビルダーは `src/lib/structured-data.ts`、埋め込みは `<JsonLd>`。トップに WebSite + Organization + VideoGame、キャラ個別ページに画面のパンくずと対応する BreadcrumbList。価格・発売日が未確定なので `offers` は意図的に入れていない
+- **Search Console**: 環境変数 `GOOGLE_SITE_VERIFICATION` を入れると `google-site-verification` の meta が出る (DNS で所有権確認済みなら不要)
+
+### 踏んだ罠
+
+- **canonical をルートレイアウトに置かない**。metadata を書き忘れたページがトップの canonical を継承し、重複扱いでインデックスから落ちる
+- **ページ側で `openGraph` を宣言すると `app/opengraph-image.jpg` から継承されていた OG 画像が外れる**。`pageMetadata` が `images` を明示指定して補っている
+
 ## デザインシステム (globals.css に集約)
 
 - 配色トークン: `--color-nine-blue` (藍紫、ロゴ準拠) / `--color-nine-pale` (モーブ)。基調はゲームタイトル画面から実測した**くすんだモーブ (#b090b0 系)**で、青に寄せない

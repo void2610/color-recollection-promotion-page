@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import { NewsList } from "@/components/news-list";
 import { SectionHeading } from "@/components/section-heading";
 import { NEWS } from "@/data/news";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "最新情報",
-  description: "カラーリコレクションの最新情報",
-};
+  description:
+    "「カラーリコレクション」の開発状況・ストアページ公開・リリースなどの最新情報をお知らせします。",
+  path: "/news",
+});
 
 export default function NewsPage() {
   return (
