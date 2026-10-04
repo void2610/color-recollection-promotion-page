@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { GithubIcon, XIcon } from "@/components/brand-icons";
+import { XIcon } from "@/components/brand-icons";
+import { DiamondButton } from "@/components/diamond-button";
 import { CIRCLE_NAME } from "@/data/creators";
 import { NAV_ITEMS, SITE } from "@/data/site";
 
@@ -37,28 +38,9 @@ export function SiteFooter() {
             </div>
             <div className="flex items-center gap-6 border-y border-white/60 py-5">
               <span className="font-display text-sm tracking-[0.2em]">SHARE</span>
-              <a
-                href={SITE.links.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X (Twitter)"
-                className="flex h-11 w-11 rotate-45 items-center justify-center bg-white text-nine-blue transition-colors hover:bg-nine-pale"
-              >
-                <span className="-rotate-45">
-                  <XIcon size={18} />
-                </span>
-              </a>
-              <a
-                href={SITE.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="flex h-11 w-11 rotate-45 items-center justify-center bg-white text-nine-blue transition-colors hover:bg-nine-pale"
-              >
-                <span className="-rotate-45">
-                  <GithubIcon size={18} />
-                </span>
-              </a>
+              <DiamondButton href={SITE.links.twitter} variant="solid" size="md" aria-label="X (Twitter)">
+                <XIcon size={18} />
+              </DiamondButton>
             </div>
           </div>
 
