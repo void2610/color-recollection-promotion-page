@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import { DiamondButton } from "@/components/diamond-button";
 
 const SHOTS = [
   { src: "/screenshots/title.jpg", alt: "タイトル画面" },
@@ -124,22 +126,20 @@ export function ScreenshotCarousel() {
         </div>
       </div>
 
-      <button
-        type="button"
+      <DiamondButton
         onClick={() => go(-1)}
         aria-label="前のスクリーンショット"
-        className="absolute top-1/2 -left-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue shadow-[0_2px_8px_rgba(45,42,110,0.2)] transition-colors hover:bg-nine-blue hover:text-white"
+        className="absolute top-1/2 -left-4 -translate-y-1/2 shadow-[0_2px_8px_rgba(45,42,110,0.2)]"
       >
-        ‹
-      </button>
-      <button
-        type="button"
+        <ChevronLeft size={16} />
+      </DiamondButton>
+      <DiamondButton
         onClick={() => go(1)}
         aria-label="次のスクリーンショット"
-        className="absolute top-1/2 -right-4 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue shadow-[0_2px_8px_rgba(45,42,110,0.2)] transition-colors hover:bg-nine-blue hover:text-white"
+        className="absolute top-1/2 -right-4 -translate-y-1/2 shadow-[0_2px_8px_rgba(45,42,110,0.2)]"
       >
-        ›
-      </button>
+        <ChevronRight size={16} />
+      </DiamondButton>
 
       <div className="mt-4 flex justify-center gap-3">
         {SHOTS.map((shot, i) => (
@@ -198,39 +198,42 @@ export function ScreenshotCarousel() {
               {SHOTS[zoomed].alt}（{zoomed + 1} / {COUNT}）
             </figcaption>
           </figure>
-          <button
-            type="button"
+          <DiamondButton
+            variant="solid"
+            size="md"
             onClick={(e) => {
               e.stopPropagation();
               zoomStep(-1);
             }}
             aria-label="前の画像"
-            className="absolute top-1/2 left-6 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue transition-colors hover:bg-nine-blue hover:text-white"
+            className="absolute top-1/2 left-6 -translate-y-1/2"
           >
-            ‹
-          </button>
-          <button
-            type="button"
+            <ChevronLeft size={20} />
+          </DiamondButton>
+          <DiamondButton
+            variant="solid"
+            size="md"
             onClick={(e) => {
               e.stopPropagation();
               zoomStep(1);
             }}
             aria-label="次の画像"
-            className="absolute top-1/2 right-6 flex h-11 w-11 -translate-y-1/2 items-center justify-center bg-white/90 text-nine-blue transition-colors hover:bg-nine-blue hover:text-white"
+            className="absolute top-1/2 right-6 -translate-y-1/2"
           >
-            ›
-          </button>
-          <button
-            type="button"
+            <ChevronRight size={20} />
+          </DiamondButton>
+          <DiamondButton
+            variant="solid"
+            size="md"
             onClick={(e) => {
               e.stopPropagation();
               closeZoom();
             }}
             aria-label="閉じる"
-            className="absolute top-6 right-6 flex h-11 w-11 items-center justify-center bg-white/90 text-xl text-nine-blue transition-colors hover:bg-nine-blue hover:text-white"
+            className="absolute top-6 right-6"
           >
-            ×
-          </button>
+            <X size={20} />
+          </DiamondButton>
         </div>
       )}
     </div>
