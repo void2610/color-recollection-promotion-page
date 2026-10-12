@@ -85,49 +85,21 @@ figcaption {
   user-select: none;
 }
 
-/* 全ページ共通の菱形チェッカー背景 (9-nine 準拠: 左は濃く、右へ向かって薄く) */
+/* 全ページ共通のホログラム破片柄 (9-nine 準拠: 左は濃く、右へ向かって薄く)。柄は scripts/holo-shards.mjs で生成 */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: repeating-conic-gradient(
-    from 45deg,
-    rgba(139, 96, 138, 0.09) 0% 25%,
-    transparent 0% 50%
-  );
-  background-size: 90px 90px;
-  mask-image: linear-gradient(to right, black, rgba(0, 0, 0, 0.35) 40%, rgba(0, 0, 0, 0.25));
+  background-image: url("/patterns/holo-shards.svg");
+  background-size: 720px 720px;
+  mask-image: linear-gradient(to right, black, rgba(0, 0, 0, 0.45) 40%, rgba(0, 0, 0, 0.3));
 }
 
-/* 菱形チェッカー柄 (9-nine の背景パターンを画像なしで再現) */
-.nine-checker-light {
-  background-image: repeating-conic-gradient(
-    from 45deg,
-    rgba(139, 96, 138, 0.1) 0% 25%,
-    transparent 0% 50%
-  );
-  background-size: 90px 90px;
-}
-
-/* フッター: 藍→紫グラデーション + 菱形柄の重ね掛け */
+/* フッター: 藍→紫グラデーション */
 .grad-footer {
-  background-image:
-    repeating-conic-gradient(from 45deg, rgba(255, 255, 255, 0.05) 0% 25%, transparent 0% 50%),
-    linear-gradient(160deg, #3a2f4c, #504060 55%, #6b5480);
-  background-size:
-    90px 90px,
-    100% 100%;
-}
-
-.nine-checker-dark {
-  background-image: repeating-conic-gradient(
-    from 45deg,
-    rgba(255, 255, 255, 0.04) 0% 25%,
-    transparent 0% 50%
-  );
-  background-size: 90px 90px;
+  background-image: linear-gradient(160deg, #3a2f4c, #504060 55%, #6b5480);
 }
 
 /* スクロール出現 (9-nine の animFade 再現)。animation ではなく transition なので

@@ -4,7 +4,7 @@ import { DiamondButton } from "@/components/diamond-button";
 import { CIRCLE_NAME } from "@/data/creators";
 import { NAV_ITEMS, SITE } from "@/data/site";
 
-// 9-nine 準拠: 濃紺 + 菱形柄 + ドット状上端 + ナビ再掲 + ダイヤ型 SHARE アイコン
+// 9-nine 準拠: 濃紺 + ドット状上端 + ナビ再掲 + ダイヤ型 SHARE アイコン
 export function SiteFooter() {
   return (
     <footer className="relative">
