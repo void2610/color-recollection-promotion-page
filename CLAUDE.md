@@ -20,7 +20,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `characters.ts` — キャラ紹介 (一覧・個別ページ共用)。**ネタバレ方針**: 隠しルート・二周目要素・各キャラの核心設定 (`Docs/narrative/` の「重要ポイント」) は掲載しない。出典はゲーム側リポジトリ `../color-recollection/Docs/narrative/`
 - `news.ts` / `creators.ts` — 新しい順に追記するだけ
 
-画像素材 (`public/characters/`, `public/screenshots/`, `logo.svg`) はゲーム側リポジトリからコピーしたもの。差し替え時は sips でリサイズ・JPEG 化して軽量化する。
+画像素材 (`public/screenshots/`, `logo.svg`) はゲーム側リポジトリからコピーしたもの。差し替え時は sips でリサイズ・JPEG 化して軽量化する。
+
+立ち絵 (`public/characters/<slug>.png`) はチームの Google Drive 素材 (`キャラ/立ち絵<名前>/` の通常表情の最新版) が出典。ゲーム側リポジトリは更新が追いついていないことがあるので見ない。全キャラ同じキャンバス (1600×4482) なので、トリミングせず高さ 1400px に縮小した透過 PNG を置き、`characters.ts` の `art` (頭頂・足元・顔中心の %) を測り直す。足元はアルファの外接矩形、頭頂と顔中心は目盛りを重ねた画像で目視する。
 
 ## SEO / クローラー対応
 

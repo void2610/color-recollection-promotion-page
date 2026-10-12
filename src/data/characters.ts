@@ -33,7 +33,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "taylor",
     image: "/characters/taylor.png",
-    art: { headTop: 7.6, feet: 94.8, cx: 45.8, heightCm: 165 },
+    art: { headTop: 12.7, feet: 99.5, cx: 48, heightCm: 165 },
     name: "テイラー",
     nameEn: "Taylor",
     role: "主人公 / 仕立て屋",
@@ -55,7 +55,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "cyan",
     image: "/characters/cyan.png",
-    art: { headTop: 10.4, feet: 98.9, cx: 47, heightCm: 162 },
+    art: { headTop: 10.5, feet: 96.1, cx: 44, heightCm: 162 },
     name: "シアン",
     nameEn: "Cyan",
     role: "自動人形",
@@ -77,7 +77,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "m",
     image: "/characters/m.png",
-    art: { headTop: 17.4, feet: 96.8, cx: 45, heightCm: 156 },
+    art: { headTop: 19.5, feet: 95.8, cx: 49, heightCm: 156 },
     name: "エム",
     nameEn: "M",
     role: "自動人形",
@@ -99,7 +99,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "soga",
     image: "/characters/soga.png",
-    art: { headTop: 2.0, feet: 96.6, cx: 43, heightCm: 182 },
+    art: { headTop: 5, feet: 99.4, cx: 51, heightCm: 182 },
     name: "ソガ",
     nameEn: "Soga",
     role: "自動人形",
@@ -120,6 +120,8 @@ export const CHARACTERS: Character[] = [
   },
   {
     slug: "acier",
+    image: "/characters/acier.png",
+    art: { headTop: 6.5, feet: 95.4, cx: 48, heightCm: 176 },
     name: "アシェ",
     nameEn: "Acier",
     role: "自動人形",
@@ -141,7 +143,7 @@ export const CHARACTERS: Character[] = [
   {
     slug: "key",
     image: "/characters/key.png",
-    art: { headTop: 1.5, feet: 98.4, cx: 48, heightCm: 178 },
+    art: { headTop: 6, feet: 98.4, cx: 49, heightCm: 178 },
     name: "キイ",
     nameEn: "Key",
     role: "助手",
