@@ -27,8 +27,8 @@ export function SectionHeading({
     );
   }
   return (
-    <div className="mb-10 flex items-center">
-      <p className="text-grad-primary font-display text-5xl font-semibold tracking-[0.075em] sm:text-6xl">
+    <div className="mb-10 flex flex-wrap items-center gap-y-2">
+      <p className="text-grad-primary font-display text-4xl font-semibold tracking-[0.075em] sm:text-6xl">
         {en}
       </p>
       <p className="ml-5 text-sm font-medium tracking-[0.05em] text-nine-blue">{ja}</p>
