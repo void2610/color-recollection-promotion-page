@@ -17,7 +17,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 文面・掲載情報は `src/data/*.ts` に集約されており、ページ実装を触らず編集できる。
 
 - `site.ts` — タイトル・キャッチコピー・製品情報・ナビ項目・SNS リンク。キャッチコピーの出典はゲーム側 `Docs/MEMO.md` の正式コピー (【】は外す)。折り返し位置を文節に限るため文節ごとの配列で持つ
-- `characters.ts` — キャラ紹介 (一覧・個別ページ共用)。**ネタバレ方針**: 隠しルート・二周目要素・各キャラの核心設定 (`Docs/narrative/` の「重要ポイント」) は掲載しない。出典はゲーム側リポジトリ `../color-recollection/Docs/narrative/`
+- `characters.ts` — キャラ紹介 (一覧・個別ページ共用)。**ネタバレ方針**: 隠しルート・二周目要素・各キャラの核心設定 (`Docs/narrative/` の「重要ポイント」) は掲載しない。出典はゲーム側リポジトリ `../color-recollection/Docs/narrative/`。`quote` (セリフ) だけは Drive の今のシナリオ (`シナリオ/カラリコゲームシナリオ.md`) の試遊版範囲から一字一句そのまま引く (Docs の口調例・旧シナリオは今のシナリオから消えている)
 - `news.ts` / `creators.ts` — 新しい順に追記するだけ
 
 画像素材 (`public/screenshots/`, `logo.svg`) はゲーム側リポジトリからコピーしたもの。差し替え時は sips でリサイズ・JPEG 化して軽量化する。
