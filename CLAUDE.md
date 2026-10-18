@@ -50,6 +50,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## アニメーション実装の制約 (実際に踏んだ罠)
 
 - **持続する transform アニメーションは子孫の `fixed` 要素の位置基準を壊す** (containing block 化)。ページ遷移 (`.page-enter`) は opacity のみ、スクロール出現は animation でなく transition (`.reveal` 方式) にする
+- **回転 + `overflow-hidden` の枠の中で fill-mode (`both` / `forwards`) 付きのアニメーションを使わない**。終了後も合成レイヤーが残り、中身が回転したテクスチャ越しに再サンプリングされてぼやける (トップのキャラ菱形枠で発生)。opacity の出現なら fill-mode は不要
 - **同名 keyframes を direction: reverse で再利用してもアニメーションは再始動しない**。閉じる用は専用の `-out` keyframes を定義する (ライトボックス参照)
 - スムーススクロールは Lenis (`smooth-scroll.tsx`)。**ルート遷移時に `lenis.scrollTo(0, {immediate})` + `resize()` で内部状態を同期**しないと、短いページで最後までスクロールできなくなる
 - 全アニメーションに `prefers-reduced-motion: reduce` の無効化を付ける

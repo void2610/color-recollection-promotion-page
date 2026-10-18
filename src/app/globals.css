@@ -308,8 +308,9 @@ body::before {
   }
 }
 
+/* fill-mode を付けると終了後も合成レイヤーが残り、菱形枠 (回転 + overflow-hidden) の中の立ち絵がぼやける */
 .swap-in {
-  animation: swap-in 0.5s ease-out both;
+  animation: swap-in 0.5s ease-out;
 }
 
 /* ヒーロー下端の Scroll 指示線: 上から下へ流れる */
