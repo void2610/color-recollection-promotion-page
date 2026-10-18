@@ -23,12 +23,13 @@ export const SITE = {
   links: {
     github: "https://github.com/void2610",
     twitter: "https://twitter.com/void2610",
+    steam: "https://store.steampowered.com/app/4848670/",
   },
 } as const;
 
 // ヒーローのストア導線。href 未確定のものは COMING SOON 表示
 export const STORES = [
-  { name: "Steam", note: "ウィッシュリスト登録受付中", href: "https://store.steampowered.com/app/4848670/" },
+  { name: "Steam", note: "ウィッシュリスト登録受付中", href: SITE.links.steam },
   { name: "BOOTH", note: "無料体験版", href: undefined },
 ] as const;
 
