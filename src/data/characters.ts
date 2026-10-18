@@ -79,7 +79,7 @@ export const CHARACTERS: Character[] = [
     image: "/characters/m.png",
     art: { headTop: 19.5, feet: 95.8, cx: 49, heightCm: 156 },
     name: "エム",
-    nameEn: "M",
+    nameEn: "Aimè",
     role: "自動人形",
     color: "#e0218a",
     colorLabel: "マゼンタ × フューシャ",
