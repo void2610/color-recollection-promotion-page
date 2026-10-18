@@ -6,7 +6,7 @@ export const SITE = {
   description:
     "【修正依頼】に出された自動人形たちと対話し、彼らの運命を決める、近未来ヒューマンドラマADV。",
   genre: "パズルとキーワード選択によって進行するADVゲーム",
-  platform: "PC (Windows / Mac)、スマートフォン",
+  platform: "PC (Windows / Mac)",
   playTime: "1周 15分〜20分",
   price: "700円〜1,000円程度 (予定)",
   distribution: "Steam (有料販売) / BOOTH (無料体験版)",
