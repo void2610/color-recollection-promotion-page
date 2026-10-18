@@ -22,7 +22,7 @@ export const SITE = {
   },
   links: {
     github: "https://github.com/void2610",
-    twitter: "https://twitter.com/void2610",
+    twitter: "https://x.com/kaireco_games",
     steam: "https://store.steampowered.com/app/4848670/",
   },
 } as const;
