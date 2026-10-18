@@ -60,7 +60,10 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
 
       {/* 菱形フレームの中に立ち絵の上半身を収める */}
       <div className="order-1 flex justify-center lg:order-2">
-        <div className="relative m-8 h-64 w-64 rotate-45 overflow-hidden border-2 border-grad-primary bg-white/60 sm:h-80 sm:w-80">
+        <Link
+          href={`/characters/${current.slug}`}
+          className="relative m-8 block h-64 w-64 rotate-45 overflow-hidden border-2 border-grad-primary bg-white/60 sm:h-80 sm:w-80"
+        >
           <div key={current.slug} className="swap-in absolute inset-0 -rotate-45 scale-[1.42]">
             {current.image ? (
               <Image
@@ -78,7 +81,7 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
               </span>
             )}
           </div>
-        </div>
+        </Link>
       </div>
 
       {/* プロフィール */}
