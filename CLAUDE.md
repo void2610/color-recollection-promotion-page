@@ -43,6 +43,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - 配色トークン: `--color-nine-blue` (藍紫、ロゴ準拠) / `--color-nine-pale` (モーブ)。基調はゲームタイトル画面から実測した**くすんだモーブ (#b090b0 系)**で、青に寄せない
 - グラデーショントークン: `--grad-primary` (藍→青紫→赤紫) / `--grad-holo` / `--grad-band`。ゲーム UI は**ほぼ全要素がグラデーション**なので、単色のボタン・罫線・見出しを追加しない。`grad-primary` `text-grad-primary` `border-grad-primary` `nine-hairline` を使う。✦ (キラキラ) の装飾は付けない
+- クリエイターページはカードにせず、商業ノベルゲームのスタッフ表記 (FGO・ATRI) に倣った文字組みのクレジット (`creator-credit.tsx`: ◆役職 + 大きな名前 + 罫線区切り) にしている。アイコンは最小 144px の素材があるので 64px 程度までしか大きくできない
 - 菱形のアイコンボタン (SNS・カルーセル送り・ライトボックス操作) は `DiamondButton` (`diamond-button.tsx`) に共通化済み。`rotate-45` で自作しない。淡色背景は `variant="outline"`、濃色背景は `"solid"`
 - 全ページ共通の背景はホログラムフィルムの破片柄 (`body::before`, fixed)。写実的な箔ではなく、`--grad-holo` の 4 色を流した平面的な破片を散らしたグラフィック柄にしている。柄は `scripts/holo-shards.mjs` が継ぎ目なくタイルできる SVG (`public/patterns/`) として生成するので、密度・濃さを変えるときはスクリプトを直して再生成する。フッターには敷かない。セクションに不透明背景を敷くと隠れるので注意
 - フォント: 日本語はすべて明朝 (Noto Serif JP)。`body` の既定を `font-mincho` にし、ゴシックは読み込んでいない。英字見出しは Cormorant Infant (`font-display`)、日付・ボタンは Oswald (`font-oswald`) で、どちらも日本語は明朝へフォールバックする
