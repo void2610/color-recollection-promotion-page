@@ -28,14 +28,7 @@ export function SiteFooter() {
           </nav>
 
           <div className="mt-14 flex flex-col items-start justify-between gap-10 sm:flex-row sm:items-center">
-            <div className="flex items-center gap-6">
-              <span className="font-display text-3xl font-bold leading-none">
-                {SITE.title}
-              </span>
-              <span className="font-display text-sm tracking-[0.2em] text-white/90">
-                OFFICIAL SITE
-              </span>
-            </div>
+            <span className="font-display text-3xl font-bold leading-none">{SITE.title}</span>
             <div className="flex items-center gap-6 border-y border-white/60 py-5">
               <DiamondButton href={SITE.links.steam} variant="solid" size="md" aria-label="Steam ストアページ">
                 <SteamIcon size={18} />
