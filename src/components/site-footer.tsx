@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { XIcon } from "@/components/brand-icons";
+import { SteamIcon, XIcon } from "@/components/brand-icons";
 import { DiamondButton } from "@/components/diamond-button";
 import { CIRCLE_NAME } from "@/data/creators";
 import { NAV_ITEMS, SITE } from "@/data/site";
 
-// 9-nine 準拠: 濃紺 + ドット状上端 + ナビ再掲 + ダイヤ型 SHARE アイコン
+// 9-nine 準拠: 濃紺 + ドット状上端 + ナビ再掲 + ダイヤ型のストア・SNS アイコン
 export function SiteFooter() {
   return (
     <footer className="relative">
@@ -37,6 +37,9 @@ export function SiteFooter() {
               </span>
             </div>
             <div className="flex items-center gap-6 border-y border-white/60 py-5">
+              <DiamondButton href={SITE.links.steam} variant="solid" size="md" aria-label="Steam ストアページ">
+                <SteamIcon size={18} />
+              </DiamondButton>
               <DiamondButton href={SITE.links.twitter} variant="solid" size="md" aria-label="X (Twitter)">
                 <XIcon size={18} />
               </DiamondButton>
