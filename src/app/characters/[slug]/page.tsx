@@ -92,13 +92,13 @@ export default async function CharacterPage({ params }: Props) {
         />
 
         <div className="relative border border-nine-blue">
-          {/* 斜めの淡色ウェッジ */}
+          {/* 斜めの淡色ウェッジ。右下からキャラ色を薄く流し、形は mask で切る */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
             style={{
-              background:
-                "linear-gradient(115deg, transparent 42%, rgba(233, 220, 234, 0.55) 42%)",
+              backgroundImage: `linear-gradient(to top left, color-mix(in srgb, ${character.color} ${character.tintStrength ?? 28}%, transparent), transparent 75%), linear-gradient(rgba(233, 220, 234, 0.55), rgba(233, 220, 234, 0.55))`,
+              maskImage: "linear-gradient(115deg, transparent 42%, #000 42%)",
             }}
           />
           <div className="relative grid lg:grid-cols-2">

@@ -20,6 +20,8 @@ export type Character = {
   role: string;
   // CMYK モチーフに基づくアクセントカラー (Tailwind の任意値クラスで使用)
   color: string;
+  // 詳細ページの台形に流すキャラ色の濃さ (%)。下地のモーブの補色に近い色ほど広く見えるので薄くする
+  tintStrength?: number;
   colorLabel: string;
   quote: string;
   description: string;
@@ -104,6 +106,7 @@ export const CHARACTERS: Character[] = [
     nameEn: "Soga",
     role: "自動人形",
     color: "#f5c518",
+    tintStrength: 16,
     colorLabel: "黄色 × 海碧",
     quote: "時は金なりやで？テイラーはん。",
     description:
