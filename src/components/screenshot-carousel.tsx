@@ -7,13 +7,16 @@ import { DiamondButton } from "@/components/diamond-button";
 
 const SHOTS = [
   { src: "/screenshots/title.jpg", alt: "タイトル画面" },
-  { src: "/screenshots/novel.jpg", alt: "ノベルパート" },
-  { src: "/screenshots/ehon.jpg", alt: "絵本パート" },
-  { src: "/screenshots/taylor.jpg", alt: "ノベルパート (テイラー)" },
+  { src: "/screenshots/ehon.jpg", alt: "絵本" },
+  { src: "/screenshots/grave.jpg", alt: "ノベル (祖父の墓場)" },
   { src: "/screenshots/select.jpg", alt: "依頼書選択画面" },
   { src: "/screenshots/request.jpg", alt: "依頼書の詳細" },
-  { src: "/screenshots/craft.jpg", alt: "制作パート" },
+  { src: "/screenshots/craft.jpg", alt: "制作" },
   { src: "/screenshots/cutin.jpg", alt: "イベントシーン" },
+  { src: "/screenshots/wake-m.jpg", alt: "ノベル (エム)" },
+  { src: "/screenshots/wake-cyan.jpg", alt: "ノベル (シアン)" },
+  { src: "/screenshots/wake-soga.jpg", alt: "ノベル (ソガ)" },
+  { src: "/screenshots/report.jpg", alt: "経過報告書" },
 ];
 
 const AUTO_ADVANCE_MS = 4500;
