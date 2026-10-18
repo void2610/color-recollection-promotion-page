@@ -76,15 +76,6 @@ figcaption {
   border-image: linear-gradient(to right, #3a3782, #8a5cd8 35%, #f27fc8 65%, #5fcdf2 90%, transparent) 1;
 }
 
-/* ゲームのボタンに付く4方向のキラキラ */
-.sparkle {
-  color: #ff8fd0;
-  text-shadow:
-    0 0 8px rgba(255, 143, 208, 0.9),
-    0 0 16px rgba(95, 205, 242, 0.6);
-  user-select: none;
-}
-
 /* 全ページ共通のホログラム破片柄 (9-nine 準拠: 左は濃く、右へ向かって薄く)。柄は scripts/holo-shards.mjs で生成 */
 body::before {
   content: "";

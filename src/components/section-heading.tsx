@@ -22,11 +22,7 @@ export function SectionHeading({
         <p className="text-grad-primary relative font-display text-5xl font-semibold tracking-[0.3em] sm:text-6xl">
           {en}
         </p>
-        <p className="mt-2 flex items-center gap-3 text-xs font-medium tracking-[0.3em] text-nine-blue">
-          <span aria-hidden className="sparkle text-sm">✦</span>
-          {ja}
-          <span aria-hidden className="sparkle text-sm">✦</span>
-        </p>
+        <p className="mt-2 text-xs font-medium tracking-[0.3em] text-nine-blue">{ja}</p>
       </div>
     );
   }

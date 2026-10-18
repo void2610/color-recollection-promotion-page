@@ -62,9 +62,6 @@ export function NewsList({ items }: { items: NewsItem[] }) {
             onClick={(e) => e.stopPropagation()}
             className="lightbox-panel relative max-h-[85svh] w-full max-w-3xl overflow-y-auto bg-white p-10 shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
           >
-            <span aria-hidden className="sparkle absolute -top-3 -left-3 text-xl">
-              ✦
-            </span>
             <div className="flex flex-wrap items-center gap-4">
               <time className="font-oswald text-sm tracking-[0.1em] text-nine-blue">
                 {selected.date.replaceAll("-", ".")}
