@@ -78,12 +78,6 @@ export function CharacterShowcase({ characters }: { characters: Character[] }) {
               </span>
             )}
           </div>
-          <span aria-hidden className="sparkle absolute -top-3 -left-3 -rotate-45 text-xl">
-            ✦
-          </span>
-          <span aria-hidden className="sparkle absolute -right-3 -bottom-3 -rotate-45 text-xl">
-            ✦
-          </span>
         </div>
       </div>
 
