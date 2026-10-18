@@ -14,7 +14,7 @@ export default function CharactersPage() {
   return (
     <main className="mx-auto max-w-5xl px-6 py-16">
       <SectionHeading en="CHARACTER" ja="登場人物" />
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {CHARACTERS.map((character) => (
           <CharacterCard key={character.slug} character={character} />
         ))}
