@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { Cormorant_Infant, Noto_Sans_JP, Noto_Serif_JP, Oswald } from "next/font/google";
+import { Cormorant_Infant, Noto_Serif_JP, Oswald } from "next/font/google";
 import { LoadingScreen } from "@/components/loading-screen";
 import { Providers } from "@/components/providers";
 import { TransitionOverlay } from "@/components/transition-overlay";
@@ -20,12 +20,6 @@ const cormorant = Cormorant_Infant({
 
 const notoSerifJp = Noto_Serif_JP({
   variable: "--font-noto-serif-jp",
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-});
-
-const notoSansJp = Noto_Sans_JP({
-  variable: "--font-noto-sans-jp",
   weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
@@ -81,9 +75,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ja"
       suppressHydrationWarning
-      className={`${cormorant.variable} ${notoSerifJp.variable} ${notoSansJp.variable} ${oswald.variable} h-full bg-[#faf5f9] antialiased`}
+      className={`${cormorant.variable} ${notoSerifJp.variable} ${oswald.variable} h-full bg-[#faf5f9] antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans text-[#333]">
+      <body className="min-h-full flex flex-col font-mincho text-[#333]">
         <Providers>
           <SmoothScroll />
           <TransitionOverlay />

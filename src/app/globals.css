@@ -27,11 +27,10 @@ figcaption {
 
 /* 9-nine-project.com 準拠の配色・タイポグラフィ */
 @theme inline {
-  /* 本文はゴシック、見出し・引用は明朝 (font-mincho ユーティリティで指定) */
-  --font-sans: var(--font-noto-sans-jp), "Hiragino Kaku Gothic ProN", sans-serif;
+  /* 日本語はすべて明朝。英字専用書体に混ざった日本語も明朝へフォールバックさせる */
   --font-mincho: var(--font-noto-serif-jp), "Hiragino Mincho ProN", serif;
-  --font-display: var(--font-cormorant), serif;
-  --font-oswald: var(--font-oswald), sans-serif;
+  --font-display: var(--font-cormorant), var(--font-noto-serif-jp), "Hiragino Mincho ProN", serif;
+  --font-oswald: var(--font-oswald), var(--font-noto-serif-jp), "Hiragino Mincho ProN", sans-serif;
   --color-nine-blue: #3a3782;
   --color-nine-blue-hover: #4b47a0;
   --color-nine-pale: #e9dcea;
