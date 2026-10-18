@@ -5,7 +5,7 @@ export const SITE = {
   catchcopy: ["修正依頼に出された", "自動人形たちと対話し、", "彼らの運命を決める。"],
   description:
     "【修正依頼】に出された自動人形たちと対話し、彼らの運命を決める、近未来ヒューマンドラマADV。",
-  genre: "パズルとキーワード選択によって進行するADVゲーム",
+  genre: "近未来ヒューマンドラマADV",
   platform: "PC (Windows / Mac)",
   playTime: "1周 15分〜20分",
   price: "700円〜1,000円程度 (予定)",
