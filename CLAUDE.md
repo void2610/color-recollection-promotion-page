@@ -56,6 +56,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 構成メモ
 
-- `layout.tsx` が LoadingScreen (初回ロゴ演出)・SmoothScroll・SiteNavbar・SideRails (左右の fixed レール)・SiteFooter を組み、`template.tsx` が遷移ごとの白フラッシュ + フェードインを担う
+- `layout.tsx` が LoadingScreen (初回ロゴ演出)・SmoothScroll・SiteNavbar・SideRails (右端の fixed レール)・SiteFooter を組み、`template.tsx` が遷移ごとの白フラッシュ + フェードインを担う
 - HeroUI v2 は Tailwind v4 に `globals.css` の `@config "./tailwind.config.js"` で接続している (v4 は legacy config を明示参照しないと無視する)。HeroUI コンポーネントは Server Component から直接使えない (`"use client"` 必須)
 - lucide-react v1 にブランドアイコンは無い。X / GitHub は `brand-icons.tsx` のインライン SVG を使う

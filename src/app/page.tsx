@@ -104,12 +104,6 @@ export default function Home() {
             <p className="font-mincho text-lg tracking-[0.1em] text-[#333]">
               <Catchcopy />
             </p>
-            <p className="font-mincho text-2xl tracking-[0.3em] text-nine-blue">
-              {SITE.status}
-              <span className="font-oswald ml-3 text-sm tracking-[0.15em] text-nine-blue/70">
-                NOW IN DEVELOPMENT
-              </span>
-            </p>
           </div>
 
           {/* ストア導線 (参考サイトのストアボタン列) */}
