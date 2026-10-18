@@ -38,6 +38,14 @@ const STORY_PARAGRAPHS = [
   ],
 ];
 
+function Catchcopy() {
+  return SITE.catchcopy.map((phrase) => (
+    <span key={phrase} className="inline-block">
+      {phrase}
+    </span>
+  ));
+}
+
 // タイトル・OGP はルートレイアウトのものがそのままトップページ用なので canonical だけ足す
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -93,7 +101,9 @@ export default function Home() {
                 className="h-auto w-[80vw] max-w-[480px]"
               />
             </h1>
-            <p className="font-mincho text-lg tracking-[0.1em] text-[#333]">{SITE.catchcopy}</p>
+            <p className="font-mincho text-lg tracking-[0.1em] text-[#333]">
+              <Catchcopy />
+            </p>
             <p className="font-mincho text-2xl tracking-[0.3em] text-nine-blue">
               {SITE.status}
               <span className="font-oswald ml-3 text-sm tracking-[0.15em] text-nine-blue/70">
@@ -170,7 +180,7 @@ export default function Home() {
         <div className="mx-auto max-w-4xl px-6 text-center">
           <SectionHeading en="STORY" ja="ストーリー" align="center" />
           <p className="font-mincho text-2xl font-bold tracking-[0.15em] text-[#333] sm:text-3xl">
-            {SITE.catchcopy}
+            <Catchcopy />
           </p>
           <div className="font-mincho mt-10 space-y-8 text-[15px] leading-loose tracking-[0.08em] text-[#333]">
             {STORY_PARAGRAPHS.map((lines) => (
