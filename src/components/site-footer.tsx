@@ -37,7 +37,6 @@ export function SiteFooter() {
               </span>
             </div>
             <div className="flex items-center gap-6 border-y border-white/60 py-5">
-              <span className="font-display text-sm tracking-[0.2em]">SHARE</span>
               <DiamondButton href={SITE.links.twitter} variant="solid" size="md" aria-label="X (Twitter)">
                 <XIcon size={18} />
               </DiamondButton>
