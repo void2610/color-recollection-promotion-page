@@ -5,7 +5,12 @@ import { useEffect, useRef, useState } from "react";
 
 const LOGO_FADE_MS = 1800;
 const OVERLAY_FADE_MS = 700;
-const LOGO_MOVE_MS = 1100;
+const LOGO_MOVE_MS = 900;
+// 画面内の要素を別の位置へ運ぶ遷移なので M3 の emphasized (初速 0 で動き出し、前半で大半を進んで長く減速して着地) にする
+const MOVE_TRANSITION = {
+  transitionDuration: `${LOGO_MOVE_MS}ms`,
+  transitionTimingFunction: "cubic-bezier(0.2, 0, 0, 1)",
+};
 
 type Phase = "show" | "fade" | "move" | "done";
 
@@ -42,15 +47,15 @@ export function LoadingScreen() {
       data-loading-phase={phase}
       className={`fixed inset-0 z-[100] flex items-center justify-center ${
         phase === "move"
-          ? "pointer-events-none bg-white/0 transition-[background-color] ease-in-out"
+          ? "pointer-events-none bg-white/0 transition-[background-color]"
           : `bg-white transition-opacity duration-700 ${phase === "fade" ? "opacity-0" : "opacity-100"}`
       }`}
-      style={phase === "move" ? { transitionDuration: `${LOGO_MOVE_MS}ms` } : undefined}
+      style={phase === "move" ? MOVE_TRANSITION : undefined}
     >
       <div
         ref={logoRef}
-        className="w-[70vw] max-w-[433px] transition-transform ease-in-out"
-        style={{ transform: flight, transitionDuration: `${LOGO_MOVE_MS}ms` }}
+        className="w-[70vw] max-w-[433px] transition-transform"
+        style={{ transform: flight, ...MOVE_TRANSITION }}
       >
         <Image
           src="/logo.png"
