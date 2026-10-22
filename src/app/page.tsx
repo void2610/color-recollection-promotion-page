@@ -93,10 +93,10 @@ export default function Home() {
           <div className="flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
             <h1>
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt={SITE.title}
-                width={433}
-                height={68}
+                width={1600}
+                height={398}
                 priority
                 className="h-auto w-[80vw] max-w-[480px]"
               />

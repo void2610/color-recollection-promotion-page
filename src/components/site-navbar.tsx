@@ -26,10 +26,10 @@ export function SiteNavbar() {
     >
       <Link href="/" className="absolute top-[60px] left-6 z-10 -translate-y-1/2">
         <Image
-          src="/logo.svg"
+          src="/logo.png"
           alt={SITE.title}
-          width={433}
-          height={68}
+          width={1600}
+          height={398}
           priority
           className="h-auto w-44 sm:w-52"
         />
