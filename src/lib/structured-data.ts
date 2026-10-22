@@ -40,7 +40,7 @@ export function siteJsonLd() {
         name: SITE.title,
         alternateName: SITE.titleEn,
         url: absoluteUrl("/"),
-        image: KEY_VISUALS.map((src) => absoluteUrl(src)),
+        image: KEY_VISUALS.map(({ src }) => absoluteUrl(src)),
         description: SITE.description,
         genre: SITE.genre,
         gamePlatform: SITE.platform,
