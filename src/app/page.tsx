@@ -73,6 +73,7 @@ export default function Home() {
                 width={1600}
                 height={398}
                 priority
+                data-hero-logo
                 className="h-auto w-[80vw] max-w-[480px]"
               />
             </h1>

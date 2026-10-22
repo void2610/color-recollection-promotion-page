@@ -282,6 +282,11 @@ body::before {
   animation: loading-logo-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* ロード画面のロゴがヒーローへ移動している間は本物を隠し、着地 (ロード画面の除去) と同時に入れ替える */
+body:has([data-loading-phase="move"]) [data-hero-logo] {
+  opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .loading-logo {
     animation: none;
