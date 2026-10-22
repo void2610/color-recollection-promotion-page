@@ -61,6 +61,7 @@ KV (`public/kv/<slug>.jpg`) とロゴ (`public/logo.png`) はチームの Google
 - **同名 keyframes を direction: reverse で再利用してもアニメーションは再始動しない**。閉じる用は専用の `-out` keyframes を定義する (ライトボックス参照)
 - スムーススクロールは Lenis (`smooth-scroll.tsx`)。**ルート遷移時に `lenis.scrollTo(0, {immediate})` + `resize()` で内部状態を同期**しないと、短いページで最後までスクロールできなくなる
 - 全アニメーションに `prefers-reduced-motion: reduce` の無効化を付ける
+- **静止している要素を画面内の別の位置へ運ぶ動きに Tailwind の `ease-in-out` を使わない**。v4 では `cubic-bezier(0.4, 0, 0.2, 1)` で、最初の 2 割はほぼ動かず中盤に一気に進むため、溜めてから急に滑り出す不自然な動きになる (ロード画面のロゴ移動で指摘された)。M3 の emphasized `cubic-bezier(0.2, 0, 0, 1)` (初速 0・前半で大半を進み長く減速) を使う。出現・フェードは既存の `cubic-bezier(0.22, 1, 0.36, 1)` のままでよい
 
 ## 構成メモ
 
