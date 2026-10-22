@@ -27,6 +27,9 @@ export const SITE = {
   },
 } as const;
 
+// ヒーローの KV。Drive の起動スチル (目を開いた版) で、トップを開くたびに 1 枚を抽選する
+export const KEY_VISUALS = ["/kv/m.jpg", "/kv/cyan.jpg", "/kv/soga.jpg"] as const;
+
 // ヒーローのストア導線。href 未確定のものは COMING SOON 表示
 export const STORES = [
   { name: "Steam", note: "ウィッシュリスト登録受付中", href: SITE.links.steam },

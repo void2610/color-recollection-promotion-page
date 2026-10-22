@@ -1,6 +1,6 @@
 import { CHARACTERS } from "@/data/characters";
 import { CIRCLE_NAME } from "@/data/creators";
-import { SITE, STORES } from "@/data/site";
+import { KEY_VISUALS, SITE, STORES } from "@/data/site";
 import { absoluteUrl } from "@/lib/seo";
 
 // @id で実体を一意にし、ページ間で同じサークル・同じ作品を指していると検索エンジンに伝える
@@ -40,7 +40,7 @@ export function siteJsonLd() {
         name: SITE.title,
         alternateName: SITE.titleEn,
         url: absoluteUrl("/"),
-        image: absoluteUrl("/kv.jpg"),
+        image: KEY_VISUALS.map((src) => absoluteUrl(src)),
         description: SITE.description,
         genre: SITE.genre,
         gamePlatform: SITE.platform,
