@@ -8,6 +8,16 @@ import { KEY_VISUALS } from "@/data/site";
 const pickedIndex = Math.floor(Math.random() * KEY_VISUALS.length);
 const subscribe = () => () => {};
 const KV_ASPECT = 16 / 9;
+const BOTTOM_FADE_START = 60;
+
+// 直線的に消すと始点に段が見えるので、smoothstep で求めた不透明度の段階を並べて緩やかに消す
+const bottomFade = (start: number) => {
+  const stops = [0, 0.2, 0.4, 0.6, 0.8, 1].map((t) => {
+    const alpha = 1 - t * t * (3 - 2 * t);
+    return `rgb(0 0 0 / ${alpha.toFixed(3)}) ${start + (100 - start) * t}%`;
+  });
+  return `linear-gradient(to bottom, ${stops.join(", ")})`;
+};
 
 // ヒーローの KV (背後のぼかし + 左側の本体)。サーバー描画とハイドレーション中は抽選結果の不一致を避けて画像を出さない
 export function HeroKeyVisual() {
@@ -21,7 +31,11 @@ export function HeroKeyVisual() {
   return (
     <>
       {/* ヒーロー全体の背後に KV をぼかして敷く (ヒーローと一緒にスクロールして消える) */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{ maskImage: bottomFade(BOTTOM_FADE_START) }}
+      >
         {kv && (
           <Image
             src={kv.src}
@@ -33,7 +47,11 @@ export function HeroKeyVisual() {
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-[#faf5f9]/40 via-[#faf5f9]/70 to-[#faf5f9]/40" />
       </div>
-      <div className="absolute inset-y-0 left-0 w-full [container-type:size] lg:w-[62%]">
+      {/* 下端のフェードは translate していない枠に掛け、セクションの下端でちょうど消えるようにする */}
+      <div
+        className="absolute inset-y-0 left-0 w-full [container-type:size] lg:w-[62%]"
+        style={{ maskImage: bottomFade(BOTTOM_FADE_START) }}
+      >
         {kv && (
           <Image
             src={kv.src}
@@ -46,7 +64,7 @@ export function HeroKeyVisual() {
               // object-position の % は枠と画像の幅の差に掛かり枠の比率で位置がずれるので、cover 後の画像幅 (cq 単位) からキャラ中心を枠の中央へ寄せる
               objectPosition: `calc(50% + ${(50 - kv.focusX) / 100} * max(100cqw, ${KV_ASPECT * 100}cqh)) center`,
               maskImage:
-                "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to bottom, transparent, black 8%, black 60%, transparent 100%)",
+                "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to bottom, transparent, black 8%)",
               maskComposite: "intersect",
               WebkitMaskComposite: "source-in",
             }}
