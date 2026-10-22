@@ -28,10 +28,10 @@ export function LoadingScreen() {
       className={`fixed inset-0 z-[100] flex items-center justify-center bg-white transition-opacity duration-700 ${fading ? "opacity-0" : "opacity-100"}`}
     >
       <Image
-        src="/logo.svg"
+        src="/logo.png"
         alt=""
-        width={433}
-        height={68}
+        width={1600}
+        height={398}
         priority
         className="loading-logo w-[70vw] max-w-[433px]"
       />

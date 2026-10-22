@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **デプロイ**: Vercel 接続済み。main へ push するだけで自動デプロイされる (ブランチ / PR は使っていない)
 - **検証**: `npm run build` と `npm run lint` (eslint) を通してからコミットする。テストは無い
-- **開発サーバー**: `npm run dev`。ユーザーが localhost:3001 で常駐起動していることが多く、ホットリロードで確認できる
+- **開発サーバー**: `npm run dev`。ユーザーが localhost:3001 で常駐起動していることが多く、ホットリロードで確認できる。ヘッドレスブラウザで撮るときは `127.0.0.1` でなく `localhost` で開く (`127.0.0.1` だと JS が 403 になりハイドレーションされず、ロード画面のまま止まる)
 
 ## コンテンツはデータ駆動
 
@@ -20,7 +20,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `characters.ts` — キャラ紹介 (一覧・個別ページ共用)。**ネタバレ方針**: 隠しルート・二周目要素・各キャラの核心設定 (`Docs/narrative/` の「重要ポイント」) は掲載しない。出典はゲーム側リポジトリ `../color-recollection/Docs/narrative/`。`quote` (セリフ) だけは Drive の今のシナリオ (`シナリオ/カラリコゲームシナリオ.md`) の試遊版範囲から一字一句そのまま引く (Docs の口調例・旧シナリオは今のシナリオから消えている)
 - `news.ts` / `creators.ts` — 新しい順に追記するだけ
 
-画像素材 (`public/screenshots/`, `logo.svg`) はゲーム側リポジトリからコピーしたもの。差し替え時は sips でリサイズ・JPEG 化して軽量化する。
+画像素材 (`public/screenshots/`) はゲーム側リポジトリからコピーしたもの。差し替え時は sips でリサイズ・JPEG 化して軽量化する。
+
+KV (`public/kv/<slug>.jpg`) とロゴ (`public/logo.png`) はチームの Google Drive 素材が出典。
+
+- **KV**: `イラスト/起動スチル/ki-bijyu_<aime|cyan|soga>_3.png` (目を開いた版。無印は閉眼、`_2` は半目) を白で平坦化して 2000×1125 の JPEG にしている。ヒーローは `site.ts` の `KEY_VISUALS` から 1 枚を**クライアントで**抽選する (`hero-key-visual.tsx`)。静的生成なのでサーバーで抽選すると全訪問者に同じ KV が出る。表示位置は `focusX` (キャラ中心の横位置 %) を枠の中央に合わせる計算で、画面比率が変わってもキャラが中央に来る。差し替えたら同じフォルダの透過レイヤー (`ki-bijyu_<キャラ>_hanme.png` 等、4667×2625) の上 1600px (頭〜膝。下端の差し出した手を除く) のアルファ外接矩形の中心から測り直す
+- **ロゴ**: `ロゴ/new/logo_color2.png` (英字が藍色の版) の余白を詰め、横 1600px の透過 PNG にしている。`logo_color` は英字が白で淡色背景では読めない。`logo_402f6a` は単色版
+- **OG 画像** (`app/opengraph-image.jpg`): エムの KV を 1200×630 に切り出したもの (Steam のメインカプセルもエム)
 
 立ち絵 (`public/characters/<slug>.png`) はチームの Google Drive 素材 (`キャラ/立ち絵<名前>/` の通常表情の最新版) が出典。ゲーム側リポジトリは更新が追いついていないことがあるので見ない。全キャラ同じキャンバス (1600×4482) なので、トリミングせず高さ 1400px に縮小した透過 PNG を置き、`characters.ts` の `art` (頭頂・足元・顔中心の %) を測り直す。足元はアルファの外接矩形、頭頂と顔中心は目盛りを重ねた画像で目視する。
 

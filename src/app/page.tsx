@@ -7,6 +7,7 @@ import { ScreenshotCarousel } from "@/components/screenshot-carousel";
 import { SectionHeading } from "@/components/section-heading";
 import { CharacterShowcase } from "@/components/character-showcase";
 import { DiaDeco } from "@/components/dia-deco";
+import { HeroKeyVisual } from "@/components/hero-key-visual";
 import { ScrollHint } from "@/components/scroll-hint";
 import { ViewMore } from "@/components/view-more";
 import { CHARACTERS } from "@/data/characters";
@@ -60,43 +61,17 @@ export default function Home() {
 
       {/* ヒーロー: 左 3/5 に KV、右 2/5 にロゴ・ストア導線・最新トピック */}
       <section className="relative -mt-[120px] min-h-[100svh] overflow-hidden pt-[120px]">
-        {/* ヒーロー全体の背後に KV をぼかして敷く (ヒーローと一緒にスクロールして消える) */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-          <Image
-            src="/kv.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            className="scale-110 object-cover opacity-30 blur-md saturate-[0.8]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#faf5f9]/40 via-[#faf5f9]/70 to-[#faf5f9]/40" />
-        </div>
-        <div className="absolute inset-y-0 left-0 w-full lg:w-[62%]">
-          <Image
-            src="/kv.jpg"
-            alt=""
-            fill
-            priority
-            sizes="(min-width: 1024px) 62vw, 100vw"
-            className="translate-y-10 object-cover object-[75%_center] opacity-40 lg:opacity-100"
-            style={{
-              maskImage:
-                "linear-gradient(to right, black 55%, transparent 100%), linear-gradient(to bottom, transparent, black 8%, black 60%, transparent 100%)",
-              maskComposite: "intersect",
-              WebkitMaskComposite: "source-in",
-            }}
-          />
-        </div>
+        <HeroKeyVisual />
         <DiaDeco className="right-0 bottom-0 scale-x-[-1]" />
 
         <div className="relative mx-auto flex min-h-[calc(100svh-120px)] max-w-7xl flex-col justify-center px-6 pb-24 lg:ml-[58%] lg:mr-auto lg:max-w-[36rem] lg:pl-0">
           <div className="flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
             <h1>
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt={SITE.title}
-                width={433}
-                height={68}
+                width={1600}
+                height={398}
                 priority
                 className="h-auto w-[80vw] max-w-[480px]"
               />
