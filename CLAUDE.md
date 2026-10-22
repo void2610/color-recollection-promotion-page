@@ -24,7 +24,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 KV (`public/kv/<slug>.jpg`) とロゴ (`public/logo.png`) はチームの Google Drive 素材が出典。
 
-- **KV**: `イラスト/起動スチル/ki-bijyu_<aime|cyan|soga>_3.png` (目を開いた版。無印は閉眼、`_2` は半目) を白で平坦化して 2000×1125 の JPEG にしている。ヒーローは `site.ts` の `KEY_VISUALS` から 1 枚を**クライアントで**抽選する (`hero-key-visual.tsx`)。静的生成なのでサーバーで抽選すると全訪問者に同じ KV が出る
+- **KV**: `イラスト/起動スチル/ki-bijyu_<aime|cyan|soga>_3.png` (目を開いた版。無印は閉眼、`_2` は半目) を白で平坦化して 2000×1125 の JPEG にしている。ヒーローは `site.ts` の `KEY_VISUALS` から 1 枚を**クライアントで**抽選する (`hero-key-visual.tsx`)。静的生成なのでサーバーで抽選すると全訪問者に同じ KV が出る。表示位置は `focusX` (キャラ中心の横位置 %) を枠の中央に合わせる計算で、画面比率が変わってもキャラが中央に来る。差し替えたら同じフォルダの透過レイヤー (`ki-bijyu_<キャラ>_hanme.png` 等、4667×2625) の上 1600px (頭〜膝。下端の差し出した手を除く) のアルファ外接矩形の中心から測り直す
 - **ロゴ**: `ロゴ/new/logo_color2.png` (英字が藍色の版) の余白を詰め、横 1600px の透過 PNG にしている。`logo_color` は英字が白で淡色背景では読めない。`logo_402f6a` は単色版
 - **OG 画像** (`app/opengraph-image.jpg`): エムの KV を 1200×630 に切り出したもの (Steam のメインカプセルもエム)
 
