@@ -58,7 +58,9 @@ export function HeroKeyVisual() {
             alt=""
             fill
             fetchPriority="high"
-            sizes="(min-width: 1024px) 62vw, 100vw"
+            // cover で高さ基準に拡大されるので、表示幅は枠幅でなく画面高さ × 16/9 になる (極端な横長画面だけ枠幅)
+            sizes="(min-width: 1024px) and (min-aspect-ratio: 287/100) 62vw, (max-width: 1023px) and (min-aspect-ratio: 16/9) 100vw, 178vh"
+            quality={90}
             className="translate-y-10 object-cover opacity-40 lg:opacity-100"
             style={{
               // object-position の % は枠と画像の幅の差に掛かり枠の比率で位置がずれるので、cover 後の画像幅 (cq 単位) からキャラ中心を枠の中央へ寄せる
